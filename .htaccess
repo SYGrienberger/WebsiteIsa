@@ -1,0 +1,24 @@
+# Zorg ervoor dat bestanden zoals fonts en svg correct geladen worden
+AddType font/woff2 .woff2
+AddType font/woff .woff
+AddType font/ttf .ttf
+AddType image/svg+xml .svg
+AddType application/javascript .js
+AddType text/css .css
+
+# Gzip ondersteuning (indien ondersteund)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Cross-Origin support voor fonts (indien nodig)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|otf|eot|woff|woff2|svg)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>

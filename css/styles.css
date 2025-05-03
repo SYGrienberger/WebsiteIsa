@@ -1,0 +1,270 @@
+/* -------------------- */
+/* === VARIABELEN & FONT === */
+/* -------------------- */
+
+:root {
+  --kleur-l-blauw: #7ebaf5;
+  --kleur-blauw: #59a0e5;
+  --kleur-rood: #85301c;
+  --kleur-l-rood: #AC3723;
+  --kleur-beige: #f5E3b3;
+  --kleur-l-beige: #FAF3E0;
+}
+
+@font-face {
+  font-family: 'BoterFont';
+  src: url('../assets/SeasonSansTRIAL-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* -------------------- */
+/* === BASISSTIJLEN === */
+/* -------------------- */
+
+body {
+  margin: 0;
+  font-family: 'BoterFont', serif;
+}
+
+.scroll-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  box-sizing: border-box;
+}
+
+/* Verberg scrollbar */
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* -------------------- */
+/* === SCHERM STIJLEN === */
+/* -------------------- */
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  background-color: var(--kleur-l-beige);
+  text-align: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  position: relative; /* standaard zodat absolute children werken */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen.first {
+  /* Specifieke stijl voor eerste scherm (indien nodig) */
+}
+
+.screen.second {
+  /* Specifieke stijl voor tweede scherm (indien nodig) */
+}
+
+.screen.third {
+  /* flex-direction: row; */
+}
+
+/* -------------------- */
+/* === MID TEXT (CENTER TEXT) === */
+/* -------------------- */
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 50px;
+  text-align: center;
+  z-index: 10;
+  color: var(--kleur-l-blauw);
+}
+
+/* -------------------- */
+/* === SLIDESHOW === */
+/* -------------------- */
+
+.leftside3 {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow-container {
+  position: relative;
+  max-height: 80vh;
+  max-width: 80vh;
+  border-radius: 10px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+}
+
+.slide img {
+  width: 50vh;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Fade effect */
+.fade {
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* Pijltjes */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.3s;
+  user-select: none;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover,
+.next:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* -------------------- */
+/* === RECHTERZIJDE (ITEM LIST) === */
+/* -------------------- */
+
+.rightside3 {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-list {
+  color: var(--kleur-l-blauw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 25px;
+  text-align: left;
+  list-style: none;
+  padding: 2rem;
+}
+
+/* -------------------- */
+/* === HOEK ICONEN === */
+/* -------------------- */
+
+.corner {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 80px;
+  color: var(--kleur-l-blauw);
+}
+
+.corner.left {
+  left: 2rem;
+}
+
+.corner.right {
+  right: 2rem;
+}
+
+/* -------------------- */
+/* === LOGO === */
+/* -------------------- */
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-5%);
+}
+
+.logo-svg {
+  width: 600px;
+  max-width: 60vw;
+  height: auto;
+}
+
+.logo-top-right {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 100px;       /* pas de grootte aan zoals je wilt */
+  height: auto;
+  z-index: 20;
+}
+
+.logo-top-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.logo-top-right img {
+  transition: transform 0.3s ease;
+}
+
+.logo-top-right img:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* -------------------- */
+/* === SCROLL INDICATORS === */
+/* -------------------- */
+
+.scroll-indicators {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.scroll-indicators .dot {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.scroll-indicators .dot.active {
+  background-color: var(--kleur-blauw);
+}
