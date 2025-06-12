@@ -49,15 +49,45 @@ function handlePageChange(direction) {
     setScrollBlocked();
   }
 }
+// === Muisklikken ===
+let lastWheelTime = 0;
+const scrollThreshold = 60; // hoe snel er geswipet moet worden voor actie
+const scrollCooldown = 300; // minimale tijd tussen 2 paginawissels (ms)
+let scrollInProgress = false;
 
-// === Muiswiel ===
 function handleWheelEvent(evt) {
   evt.preventDefault();
-  const direction = evt.deltaY > 0 ? 1 : -1;
+
+  if (scrollInProgress) return;
+
+  const absX = Math.abs(evt.deltaX);
+  const absY = Math.abs(evt.deltaY);
+  const isHorizontal = absX > absY;
+
+  let direction = 0;
+
+  if (isHorizontal && absX > scrollThreshold) {
+    direction = evt.deltaX > 0 ? 1 : -1;
+  } else if (!isHorizontal && absY > scrollThreshold) {
+    direction = evt.deltaY > 0 ? 1 : -1;
+  } else {
+    return; // swipe te klein, niets doen
+  }
+
+  // Scroll uitvoeren
   handlePageChange(direction);
+
+  // Blokkeer volgende scroll voor cooldown tijd
+  scrollInProgress = true;
+  setTimeout(() => {
+    scrollInProgress = false;
+  }, scrollCooldown);
 }
 
-scrollContainer.addEventListener('wheel', handleWheelEvent);
+
+
+scrollContainer.addEventListener('wheel', handleWheelEvent, { passive: false });
+
 
 // === Touch swipe ===
 let startX = 0;
@@ -123,21 +153,15 @@ window.addEventListener('resize', () => {
   scrollToPage(currentPage);
 });
 
-// // === Snap scroll ===
-// scrollContainer.addEventListener('scroll', () => {
-//   clearTimeout(scrollContainer._snapTimeout);
-//   scrollContainer._snapTimeout = setTimeout(() => {
-//     const page = Math.round(scrollContainer.scrollLeft / getPageWidth());
-//     scrollToPage(page);
-//   }, 200);
-// });
+// === Snap scroll ===
+scrollContainer.addEventListener('scroll', () => {
+  clearTimeout(scrollContainer._snapTimeout);
+  scrollContainer._snapTimeout = setTimeout(() => {
+    const page = Math.round(scrollContainer.scrollLeft / getPageWidth());
+    scrollToPage(page);
+  }, 200);
+});
 
 // Initieel op pagina 0
 scrollToPage(currentPage);
 
-
-
-
-
-
-//SlideShow: 

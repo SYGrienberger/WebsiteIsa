@@ -177,7 +177,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  font-size: 25px;
+  font-size: 20px;
   text-align: left;
   list-style: none;
   padding: 2rem;
@@ -190,7 +190,7 @@ body {
 .corner {
   position: absolute;
   bottom: 2rem;
-  font-size: 80px;
+  font-size: 40px;
   color: var(--kleur-l-blauw);
 }
 
@@ -214,7 +214,7 @@ body {
 }
 
 .logo-svg {
-  width: 600px;
+  width: 500px;
   max-width: 60vw;
   height: auto;
 }
@@ -223,7 +223,7 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 100px;       /* pas de grootte aan zoals je wilt */
+  width: 50px;       /* pas de grootte aan zoals je wilt */
   height: auto;
   z-index: 20;
 }
