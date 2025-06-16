@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 /* -------------------- */
 /* === VARIABELEN & FONT === */
 /* -------------------- */
@@ -27,17 +30,28 @@ body {
   font-family: 'BoterFont', serif;
 }
 
+p {
+  color: var(--kleur-rood);
+  font-size: 20px;
+}
+
+a {
+    color: var(--kleur-l-blauw);
+    text-decoration: none;
+}
+
 .scroll-wrapper {
   display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+  overflow-y: scroll;
+  overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
   box-sizing: border-box;
 }
+
 
 /* Verberg scrollbar */
 .scroll-wrapper::-webkit-scrollbar {
@@ -63,21 +77,29 @@ body {
   align-items: center;
 }
 
-.screen.first {
-  /* Specifieke stijl voor eerste scherm (indien nodig) */
+.scroll-wrapper {
+  scroll-snap-type: y mandatory;
 }
 
-.screen.second {
-  /* Specifieke stijl voor tweede scherm (indien nodig) */
-}
-
-.screen.third {
-  /* flex-direction: row; */
-}
 
 /* -------------------- */
-/* === MID TEXT (CENTER TEXT) === */
+/* === Basic positions === */
 /* -------------------- */
+
+
+.top-left-corner {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+}
+
+.logo-top-right {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+}
 
 .center-text {
   position: absolute;
@@ -92,99 +114,50 @@ body {
   color: var(--kleur-l-blauw);
 }
 
-/* -------------------- */
-/* === SLIDESHOW === */
-/* -------------------- */
-
-.leftside3 {
+.left-side {
   width: 50vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.slideshow-container {
-  position: relative;
-  max-height: 80vh;
-  max-width: 80vh;
-  border-radius: 10px;
-  margin: auto;
-  overflow: hidden;
+.right-side {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.slide {
-  display: none;
-}
+/*.right-side-top {*/
+/*  !*background-color: var(--kleur-rood);*!*/
+/*  padding: 2rem;*/
+/*  border-radius: 12px;*/
+/*  height: 50%;*/
+/*  display: flex;*/
+/*  align-items: flex-end;*/
+/*}*/
 
-.slide img {
-  width: 50vh;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
+/*.right-side-bottom {*/
+/*  !*background-color: var(--kleur-l-blauw);*!*/
+/*  padding: 2rem;*/
+/*  border-radius: 12px;*/
+/*  height: 50%;*/
+/*  display: flex;*/
+/*  align-items: flex-start;*/
+/*}*/
 
-/* Fade effect */
-.fade {
-  animation: fade 1s;
-}
 
-@keyframes fade {
-  from { opacity: 0.4; }
-  to { opacity: 1; }
-}
-
-/* Pijltjes */
-.prev, .next {
-  cursor: pointer;
+.bottom-text {
   position: absolute;
-  top: 50%;
-  padding: 16px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: bold;
-  font-size: 24px;
-  transition: 0.3s;
-  user-select: none;
-  transform: translateY(-50%);
-}
-
-.prev {
-  left: 0;
-}
-
-.next {
-  right: 0;
-}
-
-.prev:hover,
-.next:hover {
-  color: rgba(255, 255, 255, 1);
+  bottom: 2rem;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: var(--kleur-blauw);
 }
 
 /* -------------------- */
-/* === RECHTERZIJDE (ITEM LIST) === */
-/* -------------------- */
-
-.rightside3 {
-  width: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.item-list {
-  color: var(--kleur-l-blauw);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  font-size: 20px;
-  text-align: left;
-  list-style: none;
-  padding: 2rem;
-}
-
-/* -------------------- */
-/* === HOEK ICONEN === */
+/* === HOEK TEKST === */
 /* -------------------- */
 
 .corner {
@@ -219,52 +192,14 @@ body {
   height: auto;
 }
 
-.logo-top-right {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 50px;       /* pas de grootte aan zoals je wilt */
-  height: auto;
-  z-index: 20;
+.link {
+  color: var(--kleur-blauw);
+  text-decoration: none;
+  transition: text-decoration-thickness 0.2s ease;
 }
 
-.logo-top-right img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.logo-top-right img {
-  transition: transform 0.3s ease;
-}
-
-.logo-top-right img:hover {
-  transform: scale(1.1) rotate(5deg);
-}
-
-/* -------------------- */
-/* === SCROLL INDICATORS === */
-/* -------------------- */
-
-.scroll-indicators {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  z-index: 1000;
-}
-
-.scroll-indicators .dot {
-  width: 10px;
-  height: 10px;
-  background-color: transparent;
-  border: 1px solid black;
-  border-radius: 50%;
-  transition: background-color 0.3s;
-}
-
-.scroll-indicators .dot.active {
-  background-color: var(--kleur-blauw);
+.link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
 }
