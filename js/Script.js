@@ -32,28 +32,33 @@ document.addEventListener("DOMContentLoaded", () => {
               cornerRight.textContent = "+ bakkerij";
               cornerLeft.style.opacity = 1;
               cornerRight.style.opacity = 1;
+              checkIfCornerLiftIsAllowed();
               break;
             case "info":
               cornerLeft.textContent = "zuurdesem";
               cornerRight.textContent = "+ viennoiserie";
               cornerLeft.style.opacity = 1;
               cornerRight.style.opacity = 1;
+              checkIfCornerLiftIsAllowed();
               break;
             case "info-slides":
               cornerLeft.textContent = "zuurdesem";
               cornerRight.textContent = "";
               cornerLeft.style.opacity = 1;
               cornerRight.style.opacity = 0;
+              checkIfCornerLiftIsAllowed();
               break;
             case "info-text":
               cornerLeft.textContent = "";
               cornerRight.textContent = "+ viennoiserie";
               cornerLeft.style.opacity = 0;
               cornerRight.style.opacity = 1;
+              checkIfCornerLiftIsAllowed();
               break;
             case "contact":
               cornerLeft.style.opacity = 0;
               cornerRight.style.opacity = 0;
+              checkIfCornerLiftIsAllowed();
               break;
           }
         }
@@ -66,3 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .querySelectorAll(".screen")
     .forEach((screen) => observer.observe(screen));
 });
+
+function checkIfCornerLiftIsAllowed() {
+  const cornerLeft = document.getElementById("corner-left");
+  if (window.innerWidth < 350 && cornerLeft.textContent == "cafe") {
+    cornerLeft.classList.add("corner-lifted");
+  } else {
+    cornerLeft.classList.remove("corner-lifted");
+  }
+}

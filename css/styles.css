@@ -272,6 +272,10 @@ a {
   color: var(--kleur-blauw);
 }
 
+.corner-lifted {
+  bottom: 4.5rem !important;
+}
+
 /* Standaard desktop */
 #info-slides,
 #info-text {
