@@ -8,10 +8,10 @@
 }
 
 .slide img {
-    width: 50vh;
-    height: auto;
+    width: 100%;
+    height: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 /* Fade effect */
@@ -27,22 +27,21 @@
 /* Pijltjes */
 .navigation {
     cursor: pointer;
-    position: absolute;
-    bottom: -2rem;
-    padding: 16px;
     color: var(--kleur-rood);
     font-weight: bold;
     font-size: 2rem;
-    transition: 0.3s;
+    transition: 0.2s;
     user-select: none;
 }
 
 .prev {
     left: 0;
+    transform: translateX(50%);
 }
 
 .next {
     right: 0;
+    transform: translateX(-50%);
 }
 
 .prev:hover,

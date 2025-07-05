@@ -41,21 +41,21 @@ html {
   --kleur-l-blauw: #7ebaf5;
   --kleur-blauw: #59a0e5;
   --kleur-rood: #85301c;
-  --kleur-l-rood: #AC3723;
-  --kleur-beige: #f5E3b3;
-  --kleur-l-beige: #FAF3E0;
+  --kleur-l-rood: #ac3723;
+  --kleur-beige: #f5e3b3;
+  --kleur-l-beige: #faf3e0;
 }
 
 @font-face {
-  font-family: 'BoterFont';
-  src: url('../assets/Fonts/SeasonSansTRIAL-Medium.woff') format('woff');
+  font-family: "BoterFont";
+  src: url("../assets/Fonts/SeasonSansTRIAL-Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'BoterFontTheSecond';
-  src: url('../assets/Fonts/PPWriter-Regular.woff') format('woff');
+  font-family: "BoterFontTheSecond";
+  src: url("../assets/Fonts/PPWriter-Regular.woff") format("woff");
   font-weight: bold;
   font-style: normal;
 }
@@ -65,17 +65,13 @@ html {
 
 body {
   margin: 0;
-  font-family: 'BoterFont', serif;
-}
-
-p {
-  color: var(--kleur-rood);
-  font-size: 20px;
+  font-family: "BoterFont", serif;
+  background-color: var(--kleur-l-beige);
 }
 
 a {
-    color: var(--kleur-l-blauw);
-    text-decoration: none;
+  color: var(--kleur-l-blauw);
+  text-decoration: none;
 }
 
 .scroll-wrapper {
@@ -90,7 +86,6 @@ a {
   box-sizing: border-box;
 }
 
-
 /* Verberg scrollbar */
 .scroll-wrapper::-webkit-scrollbar {
   display: none;
@@ -101,6 +96,8 @@ a {
 /* -------------------- */
 
 .screen {
+  max-width: 3840px;
+  margin: 0 auto;
   width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
   color: white;
@@ -118,7 +115,6 @@ a {
 .scroll-wrapper {
   scroll-snap-type: y mandatory;
 }
-
 
 /* -------------------- */
 /* === Basic positions === */
@@ -138,7 +134,7 @@ a {
 }
 
 .bottom-text {
-  font-family: 'BoterFontTheSecond', serif;
+  font-family: "BoterFontTheSecond", serif;
   position: absolute;
   bottom: 0.5rem;
   width: 100%;
@@ -147,7 +143,6 @@ a {
   color: var(--kleur-blauw);
 }
 
-
 /* Tussen 600px en 1199px → iets groter */
 @media screen and (max-width: 1199px) {
   .bottom-text {
@@ -155,42 +150,62 @@ a {
   }
 }
 
-
-.left-side {
-  width: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+.left-side,
 .right-side {
-  width: 50vw;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .slideshow-container {
-    position: relative;
-    max-height: 80vh;
-    max-width: 80vh;
-    border-radius: 10px;
-    margin: auto;
-    overflow: hidden;
+  position: relative;
+  aspect-ratio: 1 / 1.2;
+  width: 90%; /* past binnen 50% van het scherm */
+  max-width: 25vw;
+  max-height: 80vh; /* voorkomt dat het te groot wordt */
+  background-color: #fff;
+  border-radius: 0.1rem;
+  overflow: hidden;
 }
 
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: min(50vh, 90vw);
+}
+
+.slideshow-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.information-container {
+  position: relative;
+  width: 80%;
+  max-width: 60ch;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  padding: 1rem;
+  color: var(--kleur-rood);
+  transform: translateY(-5%);
+}
 
 .corner {
   position: absolute;
+  transition: opacity 0.2s ease;
+  opacity: 1;
 }
 
 .corner.bottom.left {
   bottom: 2rem;
-  left: 2rem;
+  left: 4rem;
 }
 .corner.bottom.right {
   bottom: 2rem;
-  right: 2rem;
+  right: 4rem;
 }
 
 .corner.top.left {
@@ -204,8 +219,9 @@ a {
 }
 
 .corner.text {
-  font-size: 2.5rem;
-  color: var(--kleur-l-blauw);
+  font-size: 2.7rem;
+  font-style: bold;
+  color: var(--kleur-blauw);
 }
 
 /* -------------------- */
@@ -222,6 +238,7 @@ a {
 .logo-svg {
   width: 500px;
   max-width: 60vw;
+  max-height: 50vh;
   height: auto;
 }
 
@@ -235,4 +252,103 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 0.1rem;
   text-underline-offset: 0.1rem;
+}
+
+.sticky-corners {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0; /* voorkomt extra ruimte */
+  z-index: 999;
+  pointer-events: none; /* zorgt dat je erdoorheen kunt klikken */
+}
+
+.sticky-corners .corner {
+  position: fixed;
+  bottom: 2rem;
+  font-size: 2.7rem;
+  font-style: bold;
+  color: var(--kleur-blauw);
+}
+
+/* Standaard desktop */
+#info-slides,
+#info-text {
+  display: none;
+}
+
+@media (max-width: 799px) {
+  #info {
+    display: none;
+  }
+
+  #info-slides,
+  #info-text {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Mobiele slideshow specifieke styling */
+.slideshow-wrapper-mobile {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slideshow-container-mobile {
+  width: 90vw;
+  height: auto;
+  aspect-ratio: 1 / 1.2;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slideshow-container-mobile .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.navigation-container-mobile {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.navigation-container-mobile .navigation {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--kleur-rood);
+  user-select: none;
+  cursor: pointer;
+}
+
+.navigation-container-mobile .navigation:hover {
+  color: var(--kleur-l-rood);
+}
+
+.information-container-mobile {
+  position: absolute;
+  width: 90vw;
+  max-width: 60ch;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  padding: 1rem;
+  color: var(--kleur-rood);
+  text-align: center;
 }

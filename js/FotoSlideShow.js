@@ -1,50 +1,55 @@
-let slideIndex = 0;
-let slides = document.querySelectorAll(".slide");
-let nextBtn = document.querySelector(".next");
-let prevBtn = document.querySelector(".prev");
-let slideInterval = null;
+document.addEventListener("DOMContentLoaded", () => {
+  const allSlideshows = document.querySelectorAll(
+    ".slideshow-container, .slideshow-container-mobile"
+  );
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.style.display = i === index ? "block" : "none";
+  allSlideshows.forEach((container) => {
+    let slideIndex = 0;
+    const slides = container.querySelectorAll(".slide");
+    const nextBtn = container.parentElement.querySelector(".next");
+    const prevBtn = container.parentElement.querySelector(".prev");
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = i === index ? "block" : "none";
+      });
+    }
+
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide(slideIndex);
+    }
+
+    function startSlideshow() {
+      slideInterval = setInterval(nextSlide, 8000);
+    }
+
+    function stopSlideshow() {
+      clearInterval(slideInterval);
+    }
+
+    // Init
+    showSlide(slideIndex);
+    startSlideshow();
+
+    if (nextBtn && prevBtn) {
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+        stopSlideshow();
+        startSlideshow();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+        stopSlideshow();
+        startSlideshow();
+      });
+    }
   });
-}
-
-// Volgende slide
-function nextSlide() {
-  slideIndex = (slideIndex + 1) % slides.length;
-  showSlide(slideIndex);
-}
-
-// Vorige slide
-function prevSlide() {
-  slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-  showSlide(slideIndex);
-}
-
-// Start automatische slideshow
-function startSlideshow() {
-  slideInterval = setInterval(nextSlide, 8000);
-}
-
-// Stop slideshow (bij klikken)
-function stopSlideshow() {
-  clearInterval(slideInterval);
-}
-
-// Event listeners
-nextBtn.addEventListener("click", () => {
-  nextSlide();
-  stopSlideshow();
-  startSlideshow();
 });
-
-prevBtn.addEventListener("click", () => {
-  prevSlide();
-  stopSlideshow();
-  startSlideshow();
-});
-
-// Init
-showSlide(slideIndex);
-startSlideshow();
