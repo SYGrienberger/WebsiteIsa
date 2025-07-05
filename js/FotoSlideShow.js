@@ -1,12 +1,12 @@
 let slideIndex = 0;
 let slides = document.querySelectorAll(".slide");
-let nextBtn = document.querySelector('.next');
-let prevBtn = document.querySelector('.prev');
+let nextBtn = document.querySelector(".next");
+let prevBtn = document.querySelector(".prev");
 let slideInterval = null;
 
 function showSlide(index) {
   slides.forEach((slide, i) => {
-    slide.style.display = (i === index) ? "block" : "none";
+    slide.style.display = i === index ? "block" : "none";
   });
 }
 
@@ -33,13 +33,13 @@ function stopSlideshow() {
 }
 
 // Event listeners
-nextBtn.addEventListener('click', () => {
+nextBtn.addEventListener("click", () => {
   nextSlide();
   stopSlideshow();
   startSlideshow();
 });
 
-prevBtn.addEventListener('click', () => {
+prevBtn.addEventListener("click", () => {
   prevSlide();
   stopSlideshow();
   startSlideshow();

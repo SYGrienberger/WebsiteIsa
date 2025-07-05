@@ -11,7 +11,7 @@
 <body>
     <div class="scroll-wrapper">
         <div class="screen" id="home">
-            <div class="top-left-corner">
+            <div class="corner top left">
                 <a class="link" href="#contact">Contact</a>
             </div>
             <div class="logo-area">
@@ -19,15 +19,12 @@
                     <img src="assets/logo.svg" alt="boter+zout logo" class="logo-svg">
                 </div>    
               </div>
-              <div class="corner left">cafe</div>
-              <div class="corner right">+ bakkerij</div>
+              <div class="corner bottom left text">cafe</div>
+              <div class="corner bottom right text">+ bakkerij</div>
         </div>
     
       
         <div class="screen" id="info">
-          <div class="logo-top-right">
-            <img src="assets/logo.svg" alt="Logo">
-          </div>
             <div class="left-side">
               <div class="slideshow-container">
                 <div class="slide fade">
@@ -39,26 +36,27 @@
                 <div class="slide fade">
                   <img src="assets/foto3.jpg" alt="Foto 3">
                 </div>
-              
-                <!-- Pijltjes -->
-                <a class="prev">&#10094;</a>
-                <a class="next">&#10095;</a>
+              </div>
+              <div class="navigation-container">
+                <a class="navigation prev">-</a>
+                <a class="navigation next">+</a>
               </div>
             </div>
             <div class="right-side">
-                <div class="right-side-top">
-                    <p>Boter + Zout is een kleinschalige ambachtelijke bakkerij + kantine met een focus op viennoiserie</p>
-                    <p>Boter + Zout is een kleinschalige ambachtelijke bakkerij + kantine met een focus op viennoiserie</p>
-                    <p> Open do - zo 09:00 t/m 16:00</p>
+                <div class="slideshow-container">
+                  <p>boter + zout is een ambachtelijk bakkerij + kantine voor onbijt en lunch.  Met zoveel mogelijk lokale en biologische producten. </p>
+                    <p>Open<br>do - zo<br>09:00 - 16:00</p>
                 </div>
             </div>
+                  <div class="corner bottom left text">zuurdesem</div>
+              <div class="corner bottom right text">+ viennoiserie</div>
 
         </div>
         <div class="screen" id="contact">
           <div class="center-text">
               info@boterzout.nl<br>
               +31 6 42 97 66 90<br>
-              Wielakkerstraat 14<br>
+               <span style="white-space: nowrap;">Wielakkerstraat 14</span><br>
               Arnhem<br>
           </div>
             <div class="bottom-text">
@@ -71,13 +69,7 @@
           
 
     </div>
-  <script src="./js/VerticalScroll.js"></script>
+  <script src="./js/Script.js"></script>
   <script src="./js/FotoSlideShow.js"></script>
-    <script>
-        document.querySelector('.contact-link a').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>

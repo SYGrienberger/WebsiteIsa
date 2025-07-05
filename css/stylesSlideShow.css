@@ -3,15 +3,6 @@
 /* === SLIDESHOW === */
 /* -------------------- */
 
-.slideshow-container {
-    position: relative;
-    max-height: 80vh;
-    max-width: 80vh;
-    border-radius: 10px;
-    margin: auto;
-    overflow: hidden;
-}
-
 .slide {
     display: none;
 }
@@ -34,17 +25,16 @@
 }
 
 /* Pijltjes */
-.prev, .next {
+.navigation {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    bottom: -2rem;
     padding: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--kleur-rood);
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2rem;
     transition: 0.3s;
     user-select: none;
-    transform: translateY(-50%);
 }
 
 .prev {
@@ -57,5 +47,5 @@
 
 .prev:hover,
 .next:hover {
-    color: rgba(255, 255, 255, 1);
+    color: var(--kleur-l-rood);
 }

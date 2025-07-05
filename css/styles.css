@@ -1,6 +1,38 @@
 html {
   scroll-behavior: smooth;
+  font-size: 14px; /* basis voor kleine schermen zoals mobiel */
 }
+
+@media (min-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 750px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1400px) {
+  html {
+    font-size: 20px;
+  }
+}
+
 /* -------------------- */
 /* === VARIABELEN & FONT === */
 /* -------------------- */
@@ -16,11 +48,17 @@ html {
 
 @font-face {
   font-family: 'BoterFont';
-  src: url('../assets/SeasonSansTRIAL-Medium.woff') format('woff');
+  src: url('../assets/Fonts/SeasonSansTRIAL-Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'BoterFontTheSecond';
+  src: url('../assets/Fonts/PPWriter-Regular.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
 /* -------------------- */
 /* === BASISSTIJLEN === */
 /* -------------------- */
@@ -64,7 +102,7 @@ a {
 
 .screen {
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   color: white;
   background-color: var(--kleur-l-beige);
   text-align: center;
@@ -86,33 +124,37 @@ a {
 /* === Basic positions === */
 /* -------------------- */
 
-
-.top-left-corner {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  display: flex;
-}
-
-.logo-top-right {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-}
-
 .center-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 50px;
+  padding: 1rem 2rem;
+  border-radius: 1.5rem;
+  font-size: 2.5rem;
   text-align: center;
   z-index: 10;
   color: var(--kleur-l-blauw);
 }
+
+.bottom-text {
+  font-family: 'BoterFontTheSecond', serif;
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--kleur-blauw);
+}
+
+
+/* Tussen 600px en 1199px → iets groter */
+@media screen and (max-width: 1199px) {
+  .bottom-text {
+    font-size: 1.6rem;
+  }
+}
+
 
 .left-side {
   width: 50vw;
@@ -128,51 +170,42 @@ a {
   align-items: center;
 }
 
-/*.right-side-top {*/
-/*  !*background-color: var(--kleur-rood);*!*/
-/*  padding: 2rem;*/
-/*  border-radius: 12px;*/
-/*  height: 50%;*/
-/*  display: flex;*/
-/*  align-items: flex-end;*/
-/*}*/
-
-/*.right-side-bottom {*/
-/*  !*background-color: var(--kleur-l-blauw);*!*/
-/*  padding: 2rem;*/
-/*  border-radius: 12px;*/
-/*  height: 50%;*/
-/*  display: flex;*/
-/*  align-items: flex-start;*/
-/*}*/
-
-
-.bottom-text {
-  position: absolute;
-  bottom: 2rem;
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-  color: var(--kleur-blauw);
+.slideshow-container {
+    position: relative;
+    max-height: 80vh;
+    max-width: 80vh;
+    border-radius: 10px;
+    margin: auto;
+    overflow: hidden;
 }
 
-/* -------------------- */
-/* === HOEK TEKST === */
-/* -------------------- */
 
 .corner {
   position: absolute;
-  bottom: 2rem;
-  font-size: 40px;
-  color: var(--kleur-l-blauw);
 }
 
-.corner.left {
+.corner.bottom.left {
+  bottom: 2rem;
   left: 2rem;
 }
-
-.corner.right {
+.corner.bottom.right {
+  bottom: 2rem;
   right: 2rem;
+}
+
+.corner.top.left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.corner.top.right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.corner.text {
+  font-size: 2.5rem;
+  color: var(--kleur-l-blauw);
 }
 
 /* -------------------- */
@@ -200,6 +233,6 @@ a {
 
 .link:hover {
   text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 4px;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.1rem;
 }
