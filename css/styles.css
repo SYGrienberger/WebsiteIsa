@@ -149,6 +149,11 @@ a {
     font-size: 1.6rem;
   }
 }
+@media (max-width: 799px) {
+  .bottom-text {
+    bottom: 2rem;
+  }
+}
 
 .left-side,
 .right-side {
@@ -161,7 +166,7 @@ a {
 
 .slideshow-container {
   position: relative;
-  aspect-ratio: 1 / 1.2;
+  aspect-ratio: 1 / 1.4;
   width: 90%; /* past binnen 50% van het scherm */
   max-width: 25vw;
   max-height: 80vh; /* voorkomt dat het te groot wordt */
@@ -309,7 +314,7 @@ a {
 .slideshow-container-mobile {
   width: 90vw;
   height: auto;
-  aspect-ratio: 1 / 1.2;
+  aspect-ratio: 1 / 1.4;
   background-color: #fff;
   border-radius: 0.3rem;
   overflow: hidden;

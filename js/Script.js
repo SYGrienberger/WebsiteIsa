@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const screenId = entry.target.id;
           switch (screenId) {
             case "home":
-              cornerLeft.textContent = "cafe";
+              cornerLeft.textContent = "kantine";
               cornerRight.textContent = "+ bakkerij";
               cornerLeft.style.opacity = 1;
               cornerRight.style.opacity = 1;
@@ -42,17 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
               checkIfCornerLiftIsAllowed();
               break;
             case "info-slides":
-              cornerLeft.textContent = "zuurdesem";
+              cornerLeft.textContent = "";
               cornerRight.textContent = "";
-              cornerLeft.style.opacity = 1;
+              cornerLeft.style.opacity = 0;
               cornerRight.style.opacity = 0;
               checkIfCornerLiftIsAllowed();
               break;
             case "info-text":
               cornerLeft.textContent = "";
-              cornerRight.textContent = "+ viennoiserie";
+              cornerRight.textContent = "";
               cornerLeft.style.opacity = 0;
-              cornerRight.style.opacity = 1;
+              cornerRight.style.opacity = 0;
               checkIfCornerLiftIsAllowed();
               break;
             case "contact":
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function checkIfCornerLiftIsAllowed() {
   const cornerLeft = document.getElementById("corner-left");
-  if (window.innerWidth < 350 && cornerLeft.textContent == "cafe") {
+  if (window.innerWidth < 400 && cornerLeft.textContent == "kantine") {
     cornerLeft.classList.add("corner-lifted");
   } else {
     cornerLeft.classList.remove("corner-lifted");
