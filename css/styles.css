@@ -375,6 +375,7 @@ a {
 /* Maak de h1 onzichtbaar */
 .information-container h1,
 .information-container-mobile h1 {
+  color: var(--kleur-beige);
   position: absolute;
   width: 1px;
   height: 1px;
