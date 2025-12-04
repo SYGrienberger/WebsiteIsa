@@ -80,3 +80,48 @@ function checkIfCornerLiftIsAllowed() {
     cornerLeft.classList.remove("corner-lifted");
   }
 }
+
+function openMenu(type) {
+  const overlay = document.getElementById("side-menu-overlay");
+  const drinksSection = document.getElementById("menu-drinks");
+  const foodSection = document.getElementById("menu-food");
+
+  // Reset: verberg alles eerst
+  drinksSection.classList.remove("active");
+  foodSection.classList.remove("active");
+
+  // Toon het menu
+  overlay.classList.add("open");
+
+  // Toon de juiste sectie (of allebei als je dat liever hebt, maar dit is netter)
+  if (type === "drinks") {
+    drinksSection.classList.add("active");
+  } else if (type === "food") {
+    foodSection.classList.add("active");
+  } else {
+    // Fallback: toon beide als er geen type is meegegeven
+    drinksSection.classList.add("active");
+    foodSection.classList.add("active");
+  }
+}
+
+function closeMenu() {
+  const overlay = document.getElementById("side-menu-overlay");
+  overlay.classList.remove("open");
+}
+
+// Sluit menu als je op de donkere achtergrond klikt (buiten het menu)
+document
+  .getElementById("side-menu-overlay")
+  .addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeMenu();
+    }
+  });
+
+// Sluit menu met Escape toets
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+});
