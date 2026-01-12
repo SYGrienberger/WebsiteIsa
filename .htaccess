@@ -1,4 +1,4 @@
-# Zorg ervoor dat bestanden zoals fonts en svg correct geladen worden
+# 1. Zorg ervoor dat bestanden zoals fonts en svg correct geladen worden
 AddType font/woff2 .woff2
 AddType font/woff .woff
 AddType font/ttf .ttf
@@ -6,7 +6,7 @@ AddType image/svg+xml .svg
 AddType application/javascript .js
 AddType text/css .css
 
-# Gzip ondersteuning (indien ondersteund)
+# 2. Gzip compressie voor een snellere website
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/css
@@ -16,9 +16,20 @@ AddType text/css .css
   AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
-# Cross-Origin support voor fonts (indien nodig)
+# 3. Cross-Origin support voor fonts
 <IfModule mod_headers.c>
   <FilesMatch "\.(ttf|otf|eot|woff|woff2|svg)$">
     Header set Access-Control-Allow-Origin "*"
   </FilesMatch>
 </IfModule>
+
+# 4. Redirects voor HTTPS en non-WWW
+RewriteEngine On
+
+# Forceer HTTPS (veiligheid)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Forceer naar boterzout.nl (verwijder www)
+RewriteCond %{HTTP_HOST} ^www\.boterzout\.nl [NC]
+RewriteRule ^(.*)$ https://boterzout.nl/$1 [L,R=301]
