@@ -2,13 +2,14 @@
 const openingstijden = {
   dagen: "wo \u2013 zo",
   tijden: "09:00 \u2013 16:00",
+  extra: "tweede paasdag ook geopend",
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   ["openingstijden-desktop", "openingstijden-mobiel"].forEach((id) => {
     const el = document.getElementById(id);
     if (el) {
-      el.innerHTML = `Openingstijden:<br />${openingstijden.dagen}<br />${openingstijden.tijden}`;
+      el.innerHTML = `Openingstijden:<br />${openingstijden.dagen}<br />${openingstijden.tijden}<br />${openingstijden.extra}`;
     }
   });
   // Alle code hier binnen
@@ -135,35 +136,5 @@ document
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     closeMenu();
-    sluitPaasPopup();
   }
 });
-
-// -------------------- //
-// === PAAS POPUP === //
-// -------------------- //
-
-function toonPaasPopup() {
-  const overlay = document.getElementById("paas-overlay");
-  // Kleine vertraging zodat de pagina eerst rustig laadt
-  setTimeout(() => overlay.classList.add("open"), 600);
-}
-
-function sluitPaasPopup() {
-  document.getElementById("paas-overlay").classList.remove("open");
-  sessionStorage.setItem("paasGezien", "1");
-}
-
-// Sluit bij klik buiten de card
-document.getElementById("paas-overlay").addEventListener("click", function (e) {
-  if (e.target === this) sluitPaasPopup();
-});
-
-// Toon alleen vóór én op de paasweekend-dagen, en maar één keer per sessie
-(function () {
-  if (sessionStorage.getItem("paasGezien")) return;
-  const nu = new Date();
-  const van = new Date("2026-04-03");
-  const tot = new Date("2026-04-07");
-  if (nu >= van && nu < tot) toonPaasPopup();
-}());
