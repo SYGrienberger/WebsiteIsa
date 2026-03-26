@@ -77,7 +77,6 @@ function generateSlides() {
       const img = document.createElement("img");
       img.src = image.src;
       img.alt = image.alt;
-      img.loading = index === 0 ? "eager" : "lazy";
 
       // Voor mobiel willen we dat hij de hele ruimte vult, desktop ook
       img.style.width = "100%";
