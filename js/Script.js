@@ -1,16 +1,4 @@
-// Openingstijden: pas hier aan (ook in de JSON-LD in index.html bijwerken)
-const openingstijden = {
-  dagen: "wo \u2013 zo",
-  tijden: "09:00 \u2013 16:00",
-};
-
 document.addEventListener("DOMContentLoaded", () => {
-  ["openingstijden-desktop", "openingstijden-mobiel"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.innerHTML = `Openingstijden:<br />${openingstijden.dagen}<br />${openingstijden.tijden}`;
-    }
-  });
   // Alle code hier binnen
   const contactLink = document.querySelector(".contact-link");
   if (contactLink) {
