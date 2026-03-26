@@ -3,43 +3,43 @@
 // --------------------------------------------------
 const slideImages = [
   {
-    src: "Afbeeldingen/foto1.jpg",
+    src: "Afbeeldingen/foto1.webp",
     alt: "Verse broden en taart in de vitrine van Boter + Zout bakkerij",
   },
   {
-    src: "Afbeeldingen/foto2.jpg",
+    src: "Afbeeldingen/foto2.webp",
     alt: "Handgemaakte taarten en gebak in de bakkerij",
   },
   {
-    src: "Afbeeldingen/foto3.jpg",
+    src: "Afbeeldingen/foto3.webp",
     alt: "Interieur van Boter + Zout met gezellige zitplaatsen",
   },
   {
-    src: "Afbeeldingen/foto4.jpg",
+    src: "Afbeeldingen/foto4.webp",
     alt: "Lekker belegd broodje, ideaal voor lunch bij Boter + Zout",
   },
   {
-    src: "Afbeeldingen/foto5.jpg",
+    src: "Afbeeldingen/foto5.webp",
     alt: "Barista maakt een heerlijke cappuccino bij Boter + Zout",
   },
   {
-    src: "Afbeeldingen/foto6.jpg",
+    src: "Afbeeldingen/foto6.webp",
     alt: "Gezellige sfeer in de bakkerij met klanten die genieten",
   },
   {
-    src: "Afbeeldingen/foto7.jpg",
+    src: "Afbeeldingen/foto7.webp",
     alt: "Versgebakken croissants en zoet gebak in de vitrine",
   },
   {
-    src: "Afbeeldingen/foto8.jpg",
+    src: "Afbeeldingen/foto8.webp",
     alt: "Bakker aan het werk in de keuken van Boter + Zout",
   },
   {
-    src: "Afbeeldingen/foto9.jpg",
+    src: "Afbeeldingen/foto9.webp",
     alt: "Assortiment van ambachtelijke broden bij Boter + Zout",
   },
   {
-    src: "Afbeeldingen/foto10.jpg",
+    src: "Afbeeldingen/foto10.webp",
     alt: "Klant geniet van een kop koffie en een gebakje",
   },
 ];
@@ -70,13 +70,14 @@ function generateSlides() {
     container.innerHTML = "";
 
     // Voeg voor elke foto in de lijst HTML toe
-    slideImages.forEach((image) => {
+    slideImages.forEach((image, index) => {
       const slideDiv = document.createElement("div");
       slideDiv.className = "slide fade";
 
       const img = document.createElement("img");
       img.src = image.src;
       img.alt = image.alt;
+      img.loading = index === 0 ? "eager" : "lazy";
 
       // Voor mobiel willen we dat hij de hele ruimte vult, desktop ook
       img.style.width = "100%";
