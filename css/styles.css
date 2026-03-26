@@ -49,16 +49,20 @@ html {
 
 @font-face {
   font-family: "BoterFont";
-  src: url("../assets/Fonts/SeasonSans-Medium.woff") format("woff");
+  src: url("../assets/Fonts/SeasonSans-Medium.woff2") format("woff2"),
+       url("../assets/Fonts/SeasonSans-Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "BoterFontTheSecond";
-  src: url("../assets/Fonts/PPWriter-Regular.woff") format("woff");
+  src: url("../assets/Fonts/PPWriter-Regular.woff2") format("woff2"),
+       url("../assets/Fonts/PPWriter-Regular.woff") format("woff");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 /* -------------------- */
 /* === BASISSTIJLEN === */

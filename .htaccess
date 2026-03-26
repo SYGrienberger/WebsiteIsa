@@ -3,11 +3,13 @@ AddType font/woff2 .woff2
 AddType font/woff .woff
 AddType font/ttf .ttf
 AddType image/svg+xml .svg
+AddType image/webp .webp
 AddType application/javascript .js
 AddType text/css .css
 
 # 2. Gzip compressie voor een snellere website
 <IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
   AddOutputFilterByType DEFLATE text/plain
   AddOutputFilterByType DEFLATE text/css
   AddOutputFilterByType DEFLATE application/javascript
@@ -20,6 +22,18 @@ AddType text/css .css
 <IfModule mod_headers.c>
   <FilesMatch "\.(ttf|otf|eot|woff|woff2|svg)$">
     Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# 4. Cache-Control headers voor statische bestanden
+<IfModule mod_headers.c>
+  # Fonts en afbeeldingen: 1 jaar
+  <FilesMatch "\.(woff|woff2|webp|jpg|jpeg|png|svg|ico)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+  # CSS en JS: 1 week (kunnen vaker wijzigen)
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "max-age=604800, public"
   </FilesMatch>
 </IfModule>
 
