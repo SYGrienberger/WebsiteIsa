@@ -68,6 +68,15 @@ document.addEventListener("DOMContentLoaded", () => {
               cornerRight.style.opacity = 0;
               checkIfCornerLiftIsAllowed();
               break;
+            case "over":
+            case "ingredienten":
+            case "belofte":
+              cornerLeft.textContent = "";
+              cornerRight.textContent = "";
+              cornerLeft.style.opacity = 0;
+              cornerRight.style.opacity = 0;
+              checkIfCornerLiftIsAllowed();
+              break;
             case "contact":
               cornerLeft.style.opacity = 0;
               cornerRight.style.opacity = 0;
@@ -120,17 +129,20 @@ function openMenu(type) {
 
 function closeMenu() {
   const overlay = document.getElementById("side-menu-overlay");
-  overlay.classList.remove("open");
+  if (overlay) {
+    overlay.classList.remove("open");
+  }
 }
 
 // Sluit menu als je op de donkere achtergrond klikt (buiten het menu)
-document
-  .getElementById("side-menu-overlay")
-  .addEventListener("click", function (e) {
+const sideMenuOverlay = document.getElementById("side-menu-overlay");
+if (sideMenuOverlay) {
+  sideMenuOverlay.addEventListener("click", function (e) {
     if (e.target === this) {
       closeMenu();
     }
   });
+}
 
 // Sluit menu met Escape toets
 document.addEventListener("keydown", function (event) {
