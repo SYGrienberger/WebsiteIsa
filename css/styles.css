@@ -545,3 +545,92 @@ a {
 .menu-footer p {
   margin: 0.2rem 0;
 }
+
+/* -------------------- */
+/* === OVER ONS === */
+/* -------------------- */
+
+/* Scherm mag scrollen als de inhoud groter is dan het venster */
+.screen.over-scherm {
+  height: auto;
+  min-height: calc(var(--vh, 1vh) * 100);
+  scroll-snap-align: start;
+}
+
+.over-container {
+  position: relative;
+  width: 80%;
+  max-width: 60ch;
+  padding: 3rem 1rem;
+  color: var(--kleur-rood);
+  text-align: center;
+}
+
+/* Bredere variant zodat de drie ingrediënten naast elkaar passen */
+.over-container-breed {
+  max-width: 75ch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.over-container h1,
+.over-container h2 {
+  font-family: "BoterFont", serif;
+  color: var(--kleur-rood);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.over-container h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 1.5rem;
+}
+
+.over-intro {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.over-intro p {
+  margin-bottom: 1.2rem;
+}
+
+.over-nadruk {
+  color: var(--kleur-l-rood);
+  font-style: italic;
+}
+
+/* Ingrediënten */
+.ingredienten {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.ingredient {
+  flex: 1 1 11rem;
+  max-width: 16rem;
+  color: var(--kleur-rood);
+  text-align: center;
+}
+
+.ingredient h2 {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  margin: 0 0 0.6rem 0;
+  color: var(--kleur-bordaux);
+}
+
+.ingredient p {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Terug-link linksboven, zelfde plek als de contact-links */
+.corner.top.left .terug-link {
+  cursor: pointer;
+}
