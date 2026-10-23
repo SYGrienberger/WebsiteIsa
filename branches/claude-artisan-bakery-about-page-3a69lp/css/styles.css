@@ -1,0 +1,636 @@
+html {
+  scroll-behavior: smooth;
+  font-size: 14px; /* basis voor kleine schermen zoals mobiel */
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 750px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 900px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1400px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+/* -------------------- */
+/* === VARIABELEN & FONT === */
+/* -------------------- */
+
+:root {
+  --kleur-l-blauw: #7ebaf5;
+  --kleur-blauw: #59a0e5;
+  --kleur-rood: #85301c;
+  --kleur-l-rood: #ac3723;
+  --kleur-beige: #f5e3b3;
+  --kleur-l-beige: #faf3e0;
+  --kleur-bordaux: #6b2625;
+}
+
+@font-face {
+  font-family: "BoterFont";
+  src: url("../assets/Fonts/SeasonSans-Medium.woff2") format("woff2"),
+       url("../assets/Fonts/SeasonSans-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BoterFontTheSecond";
+  src: url("../assets/Fonts/PPWriter-Regular.woff2") format("woff2"),
+       url("../assets/Fonts/PPWriter-Regular.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+/* -------------------- */
+/* === BASISSTIJLEN === */
+/* -------------------- */
+
+body {
+  margin: 0;
+  font-family: "BoterFont", serif;
+  background-color: var(--kleur-l-beige);
+}
+
+a {
+  color: var(--kleur-l-blauw);
+  text-decoration: none;
+}
+
+.scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  box-sizing: border-box;
+}
+
+/* Verberg scrollbar */
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* -------------------- */
+/* === SCHERM STIJLEN === */
+/* -------------------- */
+
+.screen {
+  max-width: 3840px;
+  margin: 0 auto;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  color: white;
+  background-color: var(--kleur-l-beige);
+  text-align: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  position: relative; /* standaard zodat absolute children werken */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-wrapper {
+  scroll-snap-type: y mandatory;
+}
+
+/* -------------------- */
+/* === Basic positions === */
+/* -------------------- */
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  border-radius: 1.5rem;
+  font-size: 2.5rem;
+  text-align: center;
+  z-index: 10;
+  color: var(--kleur-l-blauw);
+}
+
+.bottom-text {
+  font-family: "BoterFontTheSecond", serif;
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--kleur-blauw);
+}
+
+/* Tussen 600px en 1199px → iets groter */
+@media screen and (max-width: 1199px) {
+  .bottom-text {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 799px) {
+  .bottom-text {
+    bottom: 2rem;
+  }
+}
+
+.left-side,
+.right-side {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.slideshow-container {
+  position: relative;
+  aspect-ratio: 1 / 1.4;
+  width: 90%; /* past binnen 50% van het scherm */
+  max-width: 25vw;
+  max-height: 80vh; /* voorkomt dat het te groot wordt */
+  background-color: #fff;
+  border-radius: 0.1rem;
+  overflow: hidden;
+}
+.slide {
+  display: none;
+  width: 100%; /* <-- VOEG DEZE REGEL TOE */
+  height: 100%; /* <-- VOEG DEZE REGEL TOE */
+}
+
+.slideshow-container-mobile .slide {
+  width: 100%;
+  height: 100%;
+}
+
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: min(50vh, 90vw);
+}
+
+.slideshow-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.information-container {
+  position: relative;
+  width: 80%;
+  max-width: 60ch;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  padding: 1rem;
+  color: var(--kleur-rood);
+  transform: translateY(-5%);
+}
+
+.corner {
+  position: absolute;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.corner.bottom.left {
+  bottom: 2rem;
+  left: 4rem;
+}
+.corner.bottom.right {
+  bottom: 2rem;
+  right: 4rem;
+}
+
+.corner.top.left {
+  display: flex;
+  gap: 1rem;
+  top: 1rem;
+  left: 1rem;
+}
+
+.corner.top.right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.corner.text {
+  font-size: 2.7rem;
+  font-style: bold;
+  color: var(--kleur-blauw);
+}
+
+/* -------------------- */
+/* === LOGO === */
+/* -------------------- */
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-5%);
+}
+
+.logo-svg {
+  width: 500px;
+  max-width: 60vw;
+  max-height: 50vh;
+  height: auto;
+}
+
+.link {
+  color: var(--kleur-blauw);
+  text-decoration: underline;
+  transition: text-decoration-thickness 0.2s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.1rem;
+  text-underline-offset: 0.1rem;
+}
+
+.sticky-corners {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0; /* voorkomt extra ruimte */
+  z-index: 999;
+  pointer-events: none; /* zorgt dat je erdoorheen kunt klikken */
+}
+
+.sticky-corners .corner {
+  position: fixed;
+  bottom: 2rem;
+  font-size: 2.7rem;
+  font-style: bold;
+  color: var(--kleur-blauw);
+}
+
+.corner-lifted {
+  bottom: 4.5rem !important;
+}
+
+/* Standaard desktop */
+#info-slides,
+#info-text {
+  display: none;
+}
+
+@media (max-width: 799px) {
+  #info {
+    display: none;
+  }
+
+  #info-slides,
+  #info-text {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Mobiele slideshow specifieke styling */
+.slideshow-wrapper-mobile {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slideshow-container-mobile {
+  width: 90vw;
+  height: auto;
+  aspect-ratio: 1 / 1.4;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.slideshow-container-mobile .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.navigation-container-mobile {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.navigation-container-mobile .navigation {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--kleur-rood);
+  user-select: none;
+  cursor: pointer;
+}
+
+.navigation-container-mobile .navigation:hover {
+  color: var(--kleur-l-rood);
+}
+
+.information-container-mobile {
+  position: absolute;
+  width: 90vw;
+  max-width: 60ch;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  padding: 1rem;
+  color: var(--kleur-rood);
+  text-align: center;
+}
+
+/* Maak de h1 onzichtbaar */
+.information-container h1,
+.information-container-mobile h1 {
+  color: var(--kleur-beige);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+/* -------------------- */
+/* === MENU OVERLAY === */
+/* -------------------- */
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-content {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  background-color: var(--kleur-l-beige);
+  padding: 3rem 3rem 3rem 3rem; /* Ruime padding voor rustige look */
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-left: 2px solid var(--kleur-blauw);
+
+  /* STIJL: Alles kleine letters, blauw */
+  text-transform: lowercase;
+  font-family: "BoterFont", serif;
+  color: var(--kleur-blauw);
+}
+
+.menu-overlay.open .menu-content {
+  transform: translateX(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: var(--kleur-rood);
+  cursor: pointer;
+  font-family: "BoterFontTheSecond", serif;
+}
+
+.menu-section {
+  margin-bottom: 3rem;
+  text-align: left;
+  display: none;
+}
+
+.menu-section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TITELS */
+.menu-section h2 {
+  font-family: "BoterFont", serif;
+  color: var(--kleur-bordaux);
+  font-size: 1.2rem; /* Subtiele grootte */
+  font-weight: bold;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding: 0;
+  border: none;
+  text-align: left;
+  padding-left: 1rem; /* Zelfde uitlijning als de menu items */
+}
+
+/* RIJEN STRUCTUUR */
+/* Dit is het belangrijkste voor de uitlijning: */
+.menu-row {
+  display: flex;
+  justify-content: space-between; /* Links de naam, rechts de prijs */
+  width: 100%;
+  margin-bottom: 0.2rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  padding-left: 1rem; /* Basis inspringing */
+  box-sizing: border-box; /* Zorg dat padding niet de width verpest */
+}
+
+/* De naam van het product */
+.menu-row .name {
+  flex: 1; /* Neemt alle beschikbare ruimte in */
+  padding-right: 1rem; /* Ruimte tussen naam en prijs */
+}
+
+/* De prijs */
+.menu-row .price {
+  flex-shrink: 0; /* Prijs mag niet krimpen */
+  text-align: right;
+  font-weight: normal;
+  white-space: nowrap; /* Geen regeluiteinden in prijzen */
+}
+
+/* EXTRA INSPRINGING VOOR SUB-ITEMS */
+.menu-row.indent {
+  padding-left: 3rem; /* Diepere inspringing voor ingrediënten */
+  color: var(--kleur-blauw);
+}
+
+/* GROEPEN */
+.menu-group {
+  margin-bottom: 0.8rem;
+}
+
+/* Sub tekstje */
+.menu-sub-text {
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  color: var(--kleur-blauw);
+  font-style: italic;
+}
+
+.menu-footer {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: var(--kleur-blauw);
+  padding-left: 1rem;
+  opacity: 0.8;
+}
+
+.menu-footer p {
+  margin: 0.2rem 0;
+}
+
+/* -------------------- */
+/* === OVER ONS === */
+/* -------------------- */
+
+/* Scherm mag scrollen als de inhoud groter is dan het venster */
+.screen.over-scherm {
+  height: auto;
+  min-height: calc(var(--vh, 1vh) * 100);
+  scroll-snap-align: start;
+}
+
+.over-container {
+  position: relative;
+  width: 80%;
+  max-width: 60ch;
+  padding: 3rem 1rem;
+  color: var(--kleur-rood);
+  text-align: center;
+}
+
+/* Bredere variant zodat de drie ingrediënten naast elkaar passen */
+.over-container-breed {
+  max-width: 75ch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.over-container h1,
+.over-container h2 {
+  font-family: "BoterFont", serif;
+  color: var(--kleur-rood);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.over-container h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 1.5rem;
+}
+
+.over-intro {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.over-intro p {
+  margin-bottom: 1.2rem;
+}
+
+.over-nadruk {
+  color: var(--kleur-l-rood);
+  font-style: italic;
+}
+
+/* Ingrediënten */
+.ingredienten {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.ingredient {
+  flex: 1 1 11rem;
+  max-width: 16rem;
+  color: var(--kleur-rood);
+  text-align: center;
+}
+
+.ingredient h2 {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  margin: 0 0 0.6rem 0;
+  color: var(--kleur-bordaux);
+}
+
+.ingredient p {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Terug-link linksboven, zelfde plek als de contact-links */
+.corner.top.left .terug-link {
+  cursor: pointer;
+}

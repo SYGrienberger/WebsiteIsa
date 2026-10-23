@@ -1,0 +1,50 @@
+
+/* -------------------- */
+/* === SLIDESHOW === */
+/* -------------------- */
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Fade effect */
+.fade {
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* Pijltjes */
+.navigation {
+    cursor: pointer;
+    color: var(--kleur-rood);
+    font-weight: bold;
+    font-size: 2rem;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+    transform: translateX(50%);
+}
+
+.next {
+    right: 0;
+    transform: translateX(-50%);
+}
+
+.prev:hover,
+.next:hover {
+    color: var(--kleur-l-rood);
+}
