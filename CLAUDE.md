@@ -22,10 +22,10 @@ Copy all files to an Apache server with `mod_deflate` and `mod_rewrite` enabled.
 
 ## Architecture
 
-Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info), `#contact` (footer).
+Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info), `#locatie` (Google Maps, loaded only after a click), `#contact` (footer).
 
 **JavaScript files:**
-- `js/Script.js` — viewport height calculation, scroll-based corner text (Intersection Observer), and `openMenu()`/`closeMenu()` for the side menu overlay
+- `js/Script.js` — viewport height calculation, scroll-based corner text (Intersection Observer), click-to-load Google Maps iframe, and `openMenu()`/`closeMenu()` for the side menu overlay
 - `js/FotoSlideShow.js` — photo carousel (10 images in `Afbeeldingen/`) with manual prev/next navigation
 - `js/Menu.js` — referenced in `index.html` but **does not exist**; menu logic is already in `Script.js`
 
