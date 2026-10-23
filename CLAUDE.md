@@ -22,7 +22,7 @@ Copy all files to an Apache server with `mod_deflate` and `mod_rewrite` enabled.
 
 ## Architecture
 
-Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info + small embedded Google Maps; on mobile the map sits in `#info-text`), `#contact` (footer).
+Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info), `#contact` (footer: small embedded Google Maps above the contact details).
 
 **JavaScript files:**
 - `js/Script.js` — viewport height calculation, scroll-based corner text (Intersection Observer), and `openMenu()`/`closeMenu()` for the side menu overlay
