@@ -20,14 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
     });
   }
-  // Locatie-link: naar de kaart boven de contactgegevens
-  const locatieLink = document.getElementById("locatie-link");
-  if (locatieLink) {
-    locatieLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
-    });
-  }
   // 1. Viewport fix
   const setVh = () => {
     document.documentElement.style.setProperty(
