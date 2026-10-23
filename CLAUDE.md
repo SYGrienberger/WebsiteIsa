@@ -40,6 +40,7 @@ Single-page vertical-scrolling site. All content lives in `index.html` with thes
 ## Key Notes
 
 - Code comments and variable names are in Dutch
+- `.htaccess` caches CSS/JS for a week: after changing a CSS or JS file, bump the `?v=` number on its `<link>`/`<script>` tag in `index.html`, otherwise visitors get new HTML with old styles
 - Responsive breakpoint at 800px (mobile layout uses `#info-slides` and `#info-text` instead of the desktop side-by-side layout)
 - SEO structured data (JSON-LD bakery schema) is embedded in `index.html`
 - The `<script src="js/Menu.js">` tag in `index.html` references a non-existent file — either remove the tag or create the file
