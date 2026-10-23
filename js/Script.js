@@ -30,22 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", setVh);
   setVh();
 
-  // 2. Google Maps pas laden na klik (geen cookies van Google tot die tijd)
-  const kaartKnop = document.getElementById("kaart-laden");
-  if (kaartKnop) {
-    kaartKnop.addEventListener("click", () => {
-      const kaart = document.createElement("iframe");
-      kaart.src =
-        "https://www.google.com/maps?q=Boter%20%2B%20Zout%2C%20Wielakkerstraat%2014%2C%206811%20AJ%20Arnhem&z=16&output=embed";
-      kaart.title = "Locatie van Boter + Zout op Google Maps";
-      kaart.loading = "lazy";
-      kaart.referrerPolicy = "no-referrer-when-downgrade";
-      kaart.allowFullscreen = true;
-      kaartKnop.replaceWith(kaart);
-    });
-  }
-
-  // 3. Sticky text
+  // 2. Sticky text
   const cornerLeft = document.getElementById("corner-left");
   const cornerRight = document.getElementById("corner-right");
 
