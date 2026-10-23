@@ -545,3 +545,121 @@ a {
 .menu-footer p {
   margin: 0.2rem 0;
 }
+
+/* -------------------- */
+/* === LOCATIE / KAART === */
+/* -------------------- */
+
+.locatie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(90vw, 900px);
+  gap: 1.5rem;
+}
+
+.locatie-titel {
+  margin: 0;
+  font-family: "BoterFontTheSecond", serif;
+  font-weight: normal;
+  font-size: 2.2rem;
+  color: var(--kleur-rood);
+}
+
+.kaart-frame {
+  position: relative;
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 55);
+  background-color: var(--kleur-beige);
+  border: 2px solid var(--kleur-blauw);
+  border-radius: 0.3rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.kaart-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  /* Warme tint zodat de kaart bij het beige kleurenschema past */
+  filter: sepia(0.35) saturate(0.85) contrast(0.95);
+  transition: filter 0.3s ease;
+}
+
+.kaart-frame iframe:hover {
+  filter: sepia(0.15) saturate(0.95);
+}
+
+.kaart-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 0;
+  background-color: var(--kleur-beige);
+  /* Subtiel stippenpatroon als "kaart" */
+  background-image: radial-gradient(
+    rgba(89, 160, 229, 0.25) 1px,
+    transparent 1px
+  );
+  background-size: 1.2rem 1.2rem;
+  font-family: "BoterFont", serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.kaart-placeholder:hover,
+.kaart-placeholder:focus-visible {
+  background-color: var(--kleur-l-beige);
+}
+
+.kaart-placeholder:focus-visible {
+  outline: 2px solid var(--kleur-rood);
+  outline-offset: -6px;
+}
+
+.kaart-pin {
+  width: 2.5rem;
+  height: auto;
+  fill: var(--kleur-l-rood);
+  transition: transform 0.2s ease;
+}
+
+.kaart-placeholder:hover .kaart-pin {
+  transform: translateY(-0.3rem);
+}
+
+.kaart-placeholder-tekst {
+  font-size: 1.4rem;
+  color: var(--kleur-blauw);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.kaart-placeholder-sub {
+  font-family: "BoterFontTheSecond", serif;
+  font-size: 0.9rem;
+  color: var(--kleur-rood);
+}
+
+.locatie-adres {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--kleur-blauw);
+}
+
+@media (max-width: 799px) {
+  .locatie-titel {
+    font-size: 2rem;
+  }
+
+  .kaart-frame {
+    height: calc(var(--vh, 1vh) * 50);
+  }
+}

@@ -1,0 +1,38 @@
+# Zet de site van elke branch op GitHub Pages (branch gh-pages):
+# main op de hoofdpagina, andere branches onder /branches/<naam>/
+name: Branch previews
+
+on:
+  push:
+    branches-ignore: [gh-pages]
+  delete:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: branch-previews
+  cancel-in-progress: true
+
+jobs:
+  publiceer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Haal alle branches op
+        run: git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
+
+      - name: Bouw de site per branch
+        run: bash .github/scripts/bouw-previews.sh "$RUNNER_TEMP/site"
+
+      - name: Publiceer naar gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ runner.temp }}/site
+          publish_branch: gh-pages
+          force_orphan: true

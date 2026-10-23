@@ -75,6 +75,7 @@
             style="cursor: pointer"
             >Menu</a
           >
+          <a class="contact-link link" href="#locatie">Locatie</a>
         </div>
         <div class="logo-area">
           <div class="logo">
@@ -130,6 +131,40 @@
             <p id="openingstijden-mobiel"></p>
           </div>
         </div>
+
+        <section class="screen" id="locatie">
+          <div class="locatie-container">
+            <h2 class="locatie-titel">zo vind je ons</h2>
+            <div class="kaart-frame" id="kaart-frame">
+              <button type="button" class="kaart-placeholder" id="kaart-laden">
+                <svg
+                  class="kaart-pin"
+                  viewBox="0 0 24 32"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20C24 5.4 18.6 0 12 0zm0 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"
+                  />
+                </svg>
+                <span class="kaart-placeholder-tekst">klik om de kaart te tonen</span>
+                <span class="kaart-placeholder-sub"
+                  >hiermee laad je google maps</span
+                >
+              </button>
+            </div>
+            <p class="locatie-adres">
+              Wielakkerstraat 14, Arnhem<br />
+              <a
+                class="link"
+                href="https://www.google.com/maps/dir/?api=1&amp;destination=Boter%20%2B%20Zout%2C%20Wielakkerstraat%2014%2C%206811%20AJ%20Arnhem"
+                target="_blank"
+                rel="noopener noreferrer"
+                >plan je route</a
+              >
+            </p>
+          </div>
+        </section>
       </main>
       <footer class="screen" id="contact">
         <div class="center-text">
@@ -296,7 +331,7 @@
           <div class="menu-group">
             <div class="menu-row"><span class="name">yoghurt</span></div>
             <div class="menu-row indent">
-              <span class="name">+ sinaasappel + aardbeienjam + granola</span
+              <span class="name">+ bloedsinaasappel + granola</span
               ><span class="price">€9.5</span>
             </div>
           </div>
@@ -320,56 +355,34 @@
           <h2>lunch</h2>
 
           <div class="menu-group">
-            <div class="menu-row"><span class="name">desembrood</span></div>
+            <div class="menu-row"><span class="name">desemtoast pompoen</span></div>
             <div class="menu-row indent">
-              <span class="name">+ rucolapesto + coppa di arnhem</span>
+              <span class="name">+ pompoencrème + burrata</span>
             </div>
             <div class="menu-row indent">
-              <span class="name">+ balsamico uitjes</span
-              ><span class="price">€14.5</span>
+              <span class="name">+ hazelnoot + salie</span
+              ><span class="price">€13.5</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desemtoast caponata</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ aubergine + tomaten</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ olijven + ricotta + oregano</span
+              ><span class="price">€14.0</span>
             </div>
           </div>
 
           <div class="menu-group">
             <div class="menu-row"><span class="name">desembrood</span></div>
             <div class="menu-row indent">
-              <span class="name">+ opgeklopte feta + tomaten</span>
+              <span class="name">+ pastrami + mosterdmayo</span>
             </div>
             <div class="menu-row indent">
-              <span class="name">+ artisjokharten + oregano</span
-              ><span class="price">€14.5</span>
-            </div>
-          </div>
-
-          <div class="menu-group">
-            <div class="menu-row"><span class="name">venkel salade</span></div>
-            <div class="menu-row indent">
-              <span class="name">+ venkel + nectarine + tomaat</span>
-            </div>
-            <div class="menu-row indent">
-              <span class="name">+ buffelmozzarella</span
-              ><span class="price">€13</span>
-            </div>
-          </div>
-
-          <div class="menu-group">
-            <div class="menu-row"><span class="name">panzanella</span></div>
-            <div class="menu-row indent">
-              <span class="name">+ tomaten + rode ui + desemcroutons</span>
-            </div>
-            <div class="menu-row indent">
-              <span class="name">+ komkommer</span
-              ><span class="price">€13</span>
-            </div>
-          </div>
-
-          <div class="menu-group">
-            <div class="menu-row"><span class="name">desemtoast</span></div>
-            <div class="menu-row indent">
-              <span class="name">+ makreelsalade + kappertjes</span>
-            </div>
-            <div class="menu-row indent">
-              <span class="name">+ augurk + dille</span
+              <span class="name">+ zuurkool + aardappelchips</span
               ><span class="price">€14.5</span>
             </div>
           </div>
@@ -377,15 +390,28 @@
           <div class="menu-group">
             <div class="menu-row"><span class="name">desemtosti</span></div>
             <div class="menu-row indent">
-              <span class="name">+ belegen kaas + parmezaanse kaas</span>
+              <span class="name">+ belegen kaas + parmezaan</span>
             </div>
             <div class="menu-row indent">
-              <span class="name">+ augurken</span
-              ><span class="price">€13</span>
+              <span class="name">+ gekarameliseerde ui + kimchi</span>
             </div>
             <div class="menu-row indent">
-              <span class="name">*optioneel ham</span
-              ><span class="price">+1.5</span>
+              <span class="name">keuze uit pittige saus of ketchup</span
+              ><span class="price">€13.0</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desemtosti</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ taleggio + spinazie</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ paddenstoelen + parmezaan</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">keuze uit pittige saus of ketchup</span
+              ><span class="price">€13.0</span>
             </div>
           </div>
 
