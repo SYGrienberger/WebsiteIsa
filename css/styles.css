@@ -548,33 +548,17 @@ a {
 }
 
 /* -------------------- */
-/* === LOCATIE / KAART === */
+/* === KAART (bij de info) === */
 /* -------------------- */
 
-.locatie-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: min(90vw, 900px);
-  gap: 1.5rem;
-}
-
-.locatie-titel {
-  margin: 0;
-  font-family: "BoterFontTheSecond", serif;
-  font-weight: normal;
-  font-size: 2.2rem;
-  color: var(--kleur-rood);
-}
-
 .kaart-frame {
-  position: relative;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 55);
-  background-color: var(--kleur-beige);
+  height: clamp(140px, calc(var(--vh, 1vh) * 25), 240px);
+  margin-top: 1rem;
   border: 2px solid var(--kleur-blauw);
   border-radius: 0.3rem;
   overflow: hidden;
+  background-color: var(--kleur-beige);
   box-sizing: border-box;
 }
 
@@ -590,21 +574,4 @@ a {
 
 .kaart-frame iframe:hover {
   filter: sepia(0.15) saturate(0.95);
-}
-
-.locatie-adres {
-  margin: 0;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  color: var(--kleur-blauw);
-}
-
-@media (max-width: 799px) {
-  .locatie-titel {
-    font-size: 2rem;
-  }
-
-  .kaart-frame {
-    height: calc(var(--vh, 1vh) * 50);
-  }
 }

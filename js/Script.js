@@ -20,6 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
     });
   }
+  // Locatie-link: naar het info-scherm met de kaart (op mobiel is dat #info-text)
+  const locatieLink = document.getElementById("locatie-link");
+  if (locatieLink) {
+    locatieLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      const doel = window.innerWidth < 800 ? "#info-text" : "#info";
+      document.querySelector(doel).scrollIntoView({ behavior: "smooth" });
+    });
+  }
   // 1. Viewport fix
   const setVh = () => {
     document.documentElement.style.setProperty(
@@ -68,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
               cornerRight.style.opacity = 0;
               checkIfCornerLiftIsAllowed();
               break;
-            case "locatie":
             case "contact":
               cornerLeft.style.opacity = 0;
               cornerRight.style.opacity = 0;

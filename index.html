@@ -27,8 +27,8 @@
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
     <link rel="preload" href="assets/Fonts/SeasonSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/Fonts/PPWriter-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="css/styles.css?v=4" />
-    <link rel="stylesheet" href="css/stylesSlideShow.css?v=4" />
+    <link rel="stylesheet" href="css/styles.css?v=5" />
+    <link rel="stylesheet" href="css/stylesSlideShow.css?v=5" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -98,7 +98,7 @@
             style="cursor: pointer"
             >Menu</a
           >
-          <a class="contact-link link" href="#locatie">Locatie</a>
+          <a class="contact-link link" href="#info" id="locatie-link">Locatie</a>
         </div>
         <div class="logo-area">
           <h1 class="logo">
@@ -131,6 +131,15 @@
                 om hier te eten of mee te nemen.
               </p>
               <p id="openingstijden-desktop"></p>
+              <div class="kaart-frame">
+                <iframe
+                  src="https://www.google.com/maps?q=Boter%20%2B%20Zout%2C%20Wielakkerstraat%2014%2C%206811%20AJ%20Arnhem&amp;z=16&amp;output=embed"
+                  title="Locatie van Boter + Zout op Google Maps"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -155,12 +164,6 @@
               mee te nemen.
             </p>
             <p id="openingstijden-mobiel"></p>
-          </div>
-        </div>
-
-        <section class="screen" id="locatie">
-          <div class="locatie-container">
-            <h2 class="locatie-titel">zo vind je ons</h2>
             <div class="kaart-frame">
               <iframe
                 src="https://www.google.com/maps?q=Boter%20%2B%20Zout%2C%20Wielakkerstraat%2014%2C%206811%20AJ%20Arnhem&amp;z=16&amp;output=embed"
@@ -170,18 +173,8 @@
                 allowfullscreen
               ></iframe>
             </div>
-            <p class="locatie-adres">
-              Wielakkerstraat 14, Arnhem<br />
-              <a
-                class="link"
-                href="https://www.google.com/maps/dir/?api=1&amp;destination=Boter%20%2B%20Zout%2C%20Wielakkerstraat%2014%2C%206811%20AJ%20Arnhem"
-                target="_blank"
-                rel="noopener noreferrer"
-                >plan je route</a
-              >
-            </p>
           </div>
-        </section>
+        </div>
       </main>
       <footer class="screen" id="contact">
         <div class="center-text">
@@ -501,7 +494,7 @@
       </div>
     </div>
 
-    <script src="./js/Script.js?v=4" defer></script>
-    <script src="./js/FotoSlideShow.js?v=4" defer></script>
+    <script src="./js/Script.js?v=5" defer></script>
+    <script src="./js/FotoSlideShow.js?v=5" defer></script>
   </body>
 </html>
