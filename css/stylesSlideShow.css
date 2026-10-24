@@ -1,10 +1,26 @@
-
 /* -------------------- */
 /* === SLIDESHOW === */
 /* -------------------- */
 
+/* Alle foto's naast elkaar; de strook schuift naar links/rechts */
+.slide-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    touch-action: pan-y; /* verticaal scrollen blijft werken, horizontaal is swipen */
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: grab;
+}
+
+.slide-track.slepen {
+    transition: none;
+    cursor: grabbing;
+}
+
 .slide {
-    display: none;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .slide img {
@@ -12,39 +28,27 @@
     height: 100%;
     display: block;
     object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
 }
 
-/* Fade effect */
-.fade {
-    animation: fade 1s;
-}
-
-@keyframes fade {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
-}
-
-/* Pijltjes */
+/* Plus en min */
 .navigation {
+    background: none;
+    border: 0;
+    padding: 0 0.2rem;
+    font-family: inherit;
+    line-height: 1;
     cursor: pointer;
     color: var(--kleur-rood);
     font-weight: bold;
     font-size: 2rem;
-    transition: 0.2s;
+    transition: color 0.2s;
     user-select: none;
 }
 
-.prev {
-    left: 0;
-    transform: translateX(50%);
-}
-
-.next {
-    right: 0;
-    transform: translateX(-50%);
-}
-
-.prev:hover,
-.next:hover {
+.navigation:hover,
+.navigation:focus-visible {
     color: var(--kleur-l-rood);
 }

@@ -173,30 +173,20 @@ a {
 
 .slideshow-container {
   position: relative;
-  aspect-ratio: 1 / 1.4;
-  width: 90%; /* past binnen 50% van het scherm */
-  max-width: 25vw;
-  max-height: 80vh; /* voorkomt dat het te groot wordt */
-  background-color: #fff;
-  border-radius: 0.1rem;
+  aspect-ratio: 3 / 4; /* zelfde verhouding als de meeste foto's */
+  height: min(calc(var(--vh, 1vh) * 62), 53vw);
+  background-color: var(--kleur-beige);
+  border-radius: 0.3rem;
   overflow: hidden;
 }
-.slide {
-  display: none;
-  width: 100%; /* <-- VOEG DEZE REGEL TOE */
-  height: 100%; /* <-- VOEG DEZE REGEL TOE */
-}
 
-.slideshow-container-mobile .slide {
-  width: 100%;
-  height: 100%;
-}
-
+/* Plus en min precies onder de hoeken van de foto */
 .navigation-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
-  max-width: min(50vh, 90vw);
+  margin-top: 0.6rem;
 }
 
 .slideshow-wrapper {
@@ -331,45 +321,29 @@ a {
   box-sizing: border-box;
 }
 
+.slideshow-container-mobile,
+.navigation-container-mobile {
+  /* 90% van de breedte, maar nooit hoger dan ~72% van het scherm */
+  width: min(90vw, calc(var(--vh, 1vh) * 54));
+}
+
 .slideshow-container-mobile {
-  width: 90vw;
-  height: auto;
-  aspect-ratio: 1 / 1.4;
-  background-color: #fff;
+  aspect-ratio: 3 / 4;
+  background-color: var(--kleur-beige);
   border-radius: 0.3rem;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
 }
 
-.slideshow-container-mobile .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .navigation-container-mobile {
-  width: 90vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  box-sizing: border-box;
+  margin-top: 0.6rem;
 }
 
 .navigation-container-mobile .navigation {
   font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--kleur-rood);
-  user-select: none;
-  cursor: pointer;
-}
-
-.navigation-container-mobile .navigation:hover {
-  color: var(--kleur-l-rood);
 }
 
 .information-container-mobile {

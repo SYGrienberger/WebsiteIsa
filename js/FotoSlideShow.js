@@ -48,98 +48,114 @@ const slideImages = [
 // LOGICA (Hier hoef je niets aan te passen)
 // --------------------------------------------------
 
-let slideIndex = 1;
-
-// Zodra de pagina geladen is, genereren we de HTML en starten we de show
+// Zodra de pagina geladen is, bouwen we een slideshow per container
 document.addEventListener("DOMContentLoaded", () => {
-  generateSlides();
-  showSlides(slideIndex);
-  setupNavigation();
+  maakSlideshow(".slideshow-container", ".navigation-container");
+  maakSlideshow(".slideshow-container-mobile", ".navigation-container-mobile");
 });
 
-function generateSlides() {
-  const containers = [
-    document.querySelector(".slideshow-container"), // Desktop container
-    document.querySelector(".slideshow-container-mobile"), // Mobiele container
-  ];
+function maakSlideshow(containerSelector, navigatieSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return; // Veiligheidscheck als container niet bestaat
 
-  containers.forEach((container) => {
-    if (!container) return; // Veiligheidscheck als container niet bestaat
+  const aantal = slideImages.length;
 
-    // Maak de container eerst leeg
-    container.innerHTML = "";
-
-    // Voeg voor elke foto in de lijst HTML toe
-    slideImages.forEach((image, index) => {
-      const slideDiv = document.createElement("div");
-      slideDiv.className = "slide fade";
-
-      const img = document.createElement("img");
-      img.src = image.src;
-      img.alt = image.alt;
-
-      // Voor mobiel willen we dat hij de hele ruimte vult, desktop ook
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.objectFit = "cover";
-
-      slideDiv.appendChild(img);
-      container.appendChild(slideDiv);
-    });
+  // Strook met alle foto's, plus een kopie van de laatste vooraan en de
+  // eerste achteraan, zodat doorlopen van 10 naar 1 (en terug) naadloos schuift
+  const strook = document.createElement("div");
+  strook.className = "slide-track";
+  const volgorde = [slideImages[aantal - 1], ...slideImages, slideImages[0]];
+  volgorde.forEach((image, i) => {
+    const slideDiv = document.createElement("div");
+    slideDiv.className = "slide";
+    const img = document.createElement("img");
+    img.src = image.src;
+    img.alt = image.alt;
+    img.draggable = false;
+    if (i > 1) img.loading = "lazy"; // eerste foto direct, de rest wanneer nodig
+    if (i === 0 || i === aantal + 1) slideDiv.setAttribute("aria-hidden", "true");
+    slideDiv.appendChild(img);
+    strook.appendChild(slideDiv);
   });
-}
+  container.innerHTML = "";
+  container.appendChild(strook);
 
-function setupNavigation() {
-  const prevBtn = document.querySelector(".navigation-container .prev");
-  const nextBtn = document.querySelector(".navigation-container .next");
+  let positie = 1; // 1 t/m aantal zijn de echte foto's
+  let sleepAfstand = 0;
 
-  const prevBtnMobile = document.querySelector(
-    ".navigation-container-mobile .prev"
-  );
-  const nextBtnMobile = document.querySelector(
-    ".navigation-container-mobile .next"
-  );
-
-  if (prevBtn) prevBtn.onclick = () => plusSlides(-1);
-  if (nextBtn) nextBtn.onclick = () => plusSlides(1);
-
-  if (prevBtnMobile) prevBtnMobile.onclick = () => plusSlides(-1);
-  if (nextBtnMobile) nextBtnMobile.onclick = () => plusSlides(1);
-}
-
-function plusSlides(n) {
-  showSlides((slideIndex += n));
-}
-
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
-
-function showSlides(n) {
-  updateContainerSlides(".slideshow-container", n);
-  updateContainerSlides(".slideshow-container-mobile", n);
-}
-
-function updateContainerSlides(selector, n) {
-  const container = document.querySelector(selector);
-  if (!container) return;
-
-  const slides = container.getElementsByClassName("slide");
-  if (slides.length === 0) return;
-
-  // Reset index als we buiten de grenzen gaan (looping effect)
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
+  function zetPositie(metAnimatie) {
+    strook.classList.toggle("slepen", !metAnimatie);
+    strook.style.transform = `translateX(calc(${-positie * 100}% + ${sleepAfstand}px))`;
   }
 
-  // Verberg alle slides
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  // Staan we (nog) op een kopie, spring dan onzichtbaar naar de echte foto
+  function naarOrigineel() {
+    if (positie !== 0 && positie !== aantal + 1) return;
+    positie = positie === 0 ? aantal : 1;
+    zetPositie(false);
+    strook.getBoundingClientRect(); // forceer de sprong voordat we verder animeren
   }
 
-  // Toon de juiste slide (slideIndex - 1 omdat arrays bij 0 beginnen)
-  slides[slideIndex - 1].style.display = "block";
+  function gaNaar(stap) {
+    naarOrigineel(); // bij snel klikken, voordat de vorige animatie klaar is
+    positie += stap;
+    sleepAfstand = 0;
+    zetPositie(true);
+  }
+
+  // Na het schuiven naar een kopie: onzichtbaar terugspringen naar het origineel
+  strook.addEventListener("transitionend", naarOrigineel);
+
+  // Plus en min
+  const navigatie = document.querySelector(navigatieSelector);
+  if (navigatie) {
+    navigatie.querySelector(".prev").addEventListener("click", () => gaNaar(-1));
+    navigatie.querySelector(".next").addEventListener("click", () => gaNaar(1));
+  }
+
+  // Swipen (touch) en slepen (muis): de foto volgt je vinger
+  let startX = 0;
+  let startY = 0;
+  let startTijd = 0;
+  let richting = null; // "horizontaal", "verticaal" of null (nog onbekend)
+
+  strook.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    naarOrigineel();
+    startX = e.clientX;
+    startY = e.clientY;
+    startTijd = Date.now();
+    richting = null;
+    strook.setPointerCapture(e.pointerId);
+  });
+
+  strook.addEventListener("pointermove", (e) => {
+    if (!strook.hasPointerCapture(e.pointerId)) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (richting === null && Math.abs(dx) + Math.abs(dy) > 8) {
+      richting = Math.abs(dx) > Math.abs(dy) ? "horizontaal" : "verticaal";
+    }
+    if (richting !== "horizontaal") return;
+    sleepAfstand = dx;
+    zetPositie(false);
+  });
+
+  function stopSlepen(e) {
+    if (!strook.hasPointerCapture(e.pointerId)) return;
+    strook.releasePointerCapture(e.pointerId);
+    if (richting !== "horizontaal") return;
+    const breedte = container.clientWidth;
+    const snel = Math.abs(sleepAfstand) / (Date.now() - startTijd) > 0.5; // korte flick
+    if (Math.abs(sleepAfstand) > breedte * 0.2 || (snel && Math.abs(sleepAfstand) > 20)) {
+      gaNaar(sleepAfstand < 0 ? 1 : -1);
+    } else {
+      gaNaar(0); // niet ver genoeg: terugveren
+    }
+  }
+
+  strook.addEventListener("pointerup", stopSlepen);
+  strook.addEventListener("pointercancel", stopSlepen);
+
+  zetPositie(false);
 }
