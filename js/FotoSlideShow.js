@@ -44,9 +44,17 @@ const slideImages = [
   },
 ];
 
+// Verkleinde versies staan in Afbeeldingen/klein/ als fotoN-600.webp en
+// fotoN-1000.webp (zie CLAUDE.md voor het commando bij een nieuwe foto)
+
 // --------------------------------------------------
 // LOGICA (Hier hoef je niets aan te passen)
 // --------------------------------------------------
+
+function kleineVersies(src) {
+  const naam = src.replace(/^.*\//, "").replace(/\.webp$/, "");
+  return `Afbeeldingen/klein/${naam}-600.webp 600w, Afbeeldingen/klein/${naam}-1000.webp 1000w`;
+}
 
 // Zodra de pagina geladen is, bouwen we een slideshow per container
 document.addEventListener("DOMContentLoaded", () => {
@@ -59,6 +67,7 @@ function maakSlideshow(containerSelector, navigatieSelector) {
   if (!container) return; // Veiligheidscheck als container niet bestaat
 
   const aantal = slideImages.length;
+  const zichtbaar = container.offsetParent !== null; // desktop of mobiel actief?
 
   // Strook met alle foto's, plus een kopie van de laatste vooraan en de
   // eerste achteraan, zodat doorlopen van 10 naar 1 (en terug) naadloos schuift
@@ -69,10 +78,19 @@ function maakSlideshow(containerSelector, navigatieSelector) {
     const slideDiv = document.createElement("div");
     slideDiv.className = "slide";
     const img = document.createElement("img");
-    img.src = image.src;
+    img.srcset = kleineVersies(image.src);
+    img.sizes = "(max-width: 799px) 90vw, 40vw";
+    img.src = image.src.replace(/^Afbeeldingen\/(.*)\.webp$/, "Afbeeldingen/klein/$1-1000.webp");
     img.alt = image.alt;
+    img.width = 600;
+    img.height = 800;
     img.draggable = false;
-    if (i > 1) img.loading = "lazy"; // eerste foto direct, de rest wanneer nodig
+    // Alleen de eerste foto van de zichtbare slideshow direct laden
+    if (i === 1 && zichtbaar) {
+      img.fetchPriority = "high";
+    } else {
+      img.loading = "lazy";
+    }
     if (i === 0 || i === aantal + 1) slideDiv.setAttribute("aria-hidden", "true");
     slideDiv.appendChild(img);
     strook.appendChild(slideDiv);

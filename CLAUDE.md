@@ -22,7 +22,7 @@ Copy all files to an Apache server with `mod_deflate` and `mod_rewrite` enabled.
 
 ## Architecture
 
-Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info), `#contact` (footer: small embedded Google Maps above the contact details).
+Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info), `#contact` (footer: small embedded Google Maps above the contact details; the iframe has `data-src` and `Script.js` sets `src` once the footer is about a screen away).
 
 **JavaScript files:**
 - `js/Script.js` — viewport height calculation, scroll-based corner text (Intersection Observer), and `openMenu()`/`closeMenu()` for the side menu overlay
@@ -30,17 +30,16 @@ Single-page vertical-scrolling site. All content lives in `index.html` with thes
 - `js/Menu.js` — referenced in `index.html` but **does not exist**; menu logic is already in `Script.js`
 
 **CSS files:**
-- `css/styles.css` — all site styles using CSS custom properties for the color scheme (beige, blue, rust red)
-- `css/stylesSlideShow.css` — slideshow-specific styles
+- `css/styles.css` — all site styles (including the slideshow) using CSS custom properties for the color scheme (beige, blue, rust red)
 
 **Assets:**
 - `assets/Fonts/` — custom web fonts (SeasonSans-Medium, PPWriter-Regular)
-- `Afbeeldingen/` — gallery photos (10 images, ~22MB total)
+- `Afbeeldingen/` — gallery photo originals (not served); the site loads the resized copies in `Afbeeldingen/klein/` (`fotoN-600.webp` and `fotoN-1000.webp`). For a new photo, add it to `slideImages` in `js/FotoSlideShow.js` and create both sizes, e.g. with Pillow: `python3 -c "from PIL import Image, ImageOps; im=ImageOps.exif_transpose(Image.open('Afbeeldingen/foto11.webp')).convert('RGB'); [im.resize((w, round(im.height*w/im.width)), Image.LANCZOS).save(f'Afbeeldingen/klein/foto11-{w}.webp', quality=78, method=6) for w in (600, 1000)]"`
 
 ## Key Notes
 
 - Code comments and variable names are in Dutch
-- `.htaccess` caches CSS/JS for a week: after changing a CSS or JS file, bump the `?v=` number on its `<link>`/`<script>` tag in `index.html`, otherwise visitors get new HTML with old styles
+- `.htaccess` caches CSS/JS for a year (HTML is `no-cache`): after changing a CSS or JS file, bump the `?v=` number on its `<link>`/`<script>` tag in `index.html`, otherwise visitors get new HTML with old styles
 - Responsive breakpoint at 800px (mobile layout uses `#info-slides` and `#info-text` instead of the desktop side-by-side layout)
 - SEO: JSON-LD bakery schema and Open Graph tags (share image `assets/delen.jpg`, 1200×630) are in `index.html`; `robots.txt` points to `sitemap.xml` — update its `<lastmod>` when content changes
 - The `<script src="js/Menu.js">` tag in `index.html` references a non-existent file — either remove the tag or create the file
