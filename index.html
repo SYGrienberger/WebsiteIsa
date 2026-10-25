@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bakkerij en kantine in Arnhem | Boter + Zout</title>
+    <meta
+      name="description"
+      content="Ambachtelijke bakkerij en kantine in Arnhem: vers zuurdesembrood, croissants, ontbijt en lunch met lokale en biologische producten. Wielakkerstraat 14, open wo t/m zo 09:00–16:00."
+    />
+    <link rel="canonical" href="https://boterzout.nl/" />
+    <meta name="theme-color" content="#faf3e0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content="Boter + Zout" />
+    <meta property="og:title" content="Bakkerij en kantine in Arnhem | Boter + Zout" />
+    <meta
+      property="og:description"
+      content="Zuurdesembrood, viennoiserie, ontbijt en lunch met lokale en biologische producten. Wielakkerstraat 14, Arnhem. Open wo t/m zo, 09:00–16:00."
+    />
+    <meta property="og:url" content="https://boterzout.nl/" />
+    <meta property="og:image" content="https://boterzout.nl/assets/delen.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Zuurdesembrood en lunch op tafel bij Boter + Zout in Arnhem" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+    <link rel="preload" href="assets/Fonts/SeasonSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/Fonts/PPWriter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/styles.css?v=11" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Bakery", "CafeOrCoffeeShop"],
+  "name": "Boter + Zout",
+  "alternateName": ["Boter en Zout", "Boter & Zout", "Boterzout"],
+  "description": "Ambachtelijke bakkerij en kantine in Arnhem voor zuurdesembrood, ontbijt en lunch met lokale en biologische producten.",
+  "logo": "https://boterzout.nl/assets/logo.svg",
+  "image": [
+    "https://boterzout.nl/assets/delen.jpg",
+    "https://boterzout.nl/Afbeeldingen/foto1.webp",
+    "https://boterzout.nl/Afbeeldingen/foto7.webp",
+    "https://boterzout.nl/Afbeeldingen/foto9.webp"
+  ],
+  "@id": "https://boterzout.nl",
+  "url": "https://boterzout.nl",
+  "telephone": "+31642976690",
+  "email": "info@boterzout.nl",
+  "servesCuisine": ["ontbijt", "lunch", "bakkerij", "zuurdesembrood", "viennoiserie"],
+  "areaServed": { "@type": "City", "name": "Arnhem" },
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Wielakkerstraat 14",
+    "addressLocality": "Arnhem",
+    "addressRegion": "Gelderland",
+    "postalCode": "6811 DB",
+    "addressCountry": "NL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.9813,
+    "longitude": 5.9084
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Boter+%2B+Zout+Wielakkerstraat+14+Arnhem",
+  "sameAs": [
+    "https://www.instagram.com/boterzout"
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "09:00",
+    "closes": "16:00"
+  }
+}
+</script>
+  </head>
+  <body>
+    <div class="scroll-wrapper">
+      <div class="sticky-corners">
+        <div class="corner bottom left text" id="corner-left"></div>
+        <div class="corner bottom right text" id="corner-right"></div>
+      </div>
+
+      <header class="screen" id="home">
+        <div class="corner top left">
+          <a class="contact-link link" href="#contact">Contact</a>
+          <a
+            class="contact-link link"
+            onclick="openMenu('drinks')"
+            style="cursor: pointer"
+            >Dranken</a
+          >
+          <a
+            class="contact-link link"
+            onclick="openMenu('food')"
+            style="cursor: pointer"
+            >Menu</a
+          >
+        </div>
+        <div class="logo-area">
+          <h1 class="logo">
+            <img
+              src="assets/logo.svg"
+              alt="Boter + Zout, bakkerij en kantine in Arnhem"
+              class="logo-svg"
+              width="500"
+              height="281"
+              fetchpriority="high"
+            />
+          </h1>
+        </div>
+      </header>
+      <main>
+        <div class="screen" id="info">
+          <div class="left-side">
+            <div class="slideshow-wrapper">
+              <div class="slideshow-container"></div>
+              <div class="navigation-container">
+                <button type="button" class="navigation prev" aria-label="Vorige foto">-</button>
+                <button type="button" class="navigation next" aria-label="Volgende foto">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="information-container">
+              <h2>Ambachtelijke bakkerij en kantine in Arnhem</h2>
+              <p>
+                boter + zout is een ambachtelijke bakkerij + kantine in
+                Arnhem voor ontbijt en lunch. Met zoveel mogelijk lokale en
+                biologische producten. Vers zuurdesembrood en croissants,
+                om hier te eten of mee te nemen.
+              </p>
+              <p id="openingstijden-desktop"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="screen info-slide" id="info-slides">
+          <div class="slideshow-wrapper-mobile">
+            <div class="slideshow-container-mobile"></div>
+            <div class="navigation-container-mobile">
+              <button type="button" class="navigation prev" aria-label="Vorige foto">-</button>
+              <button type="button" class="navigation next" aria-label="Volgende foto">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="screen info-text" id="info-text">
+          <div class="information-container-mobile">
+            <h2>Ambachtelijke bakkerij en kantine in Arnhem</h2>
+            <p>
+              boter + zout is een ambachtelijke bakkerij + kantine in Arnhem
+              voor ontbijt en lunch. Met zoveel mogelijk lokale en biologische
+              producten. Vers zuurdesembrood en croissants, om hier te eten of
+              mee te nemen.
+            </p>
+            <p id="openingstijden-mobiel"></p>
+          </div>
+        </div>
+      </main>
+      <footer class="screen" id="contact">
+        <div class="center-text">
+          <div class="kaart-frame">
+            <div
+              class="kaart"
+              id="kaart"
+              role="region"
+              aria-label="Kaart: Boter + Zout, Wielakkerstraat 14, Arnhem"
+            ></div>
+          </div>
+          info@boterzout.nl<br />
+          +31 6 42 97 66 90<br />
+          <span style="white-space: nowrap">Wielakkerstraat 14</span><br />
+          Arnhem<br />
+        </div>
+        <div class="bottom-text">
+          <p class="bottom-text">
+            Volg ons op
+            <a
+              class="link"
+              href="https://www.instagram.com/boterzout"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram</a
+            >
+            voor de laatste updates
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <div id="side-menu-overlay" class="menu-overlay">
+      <div class="menu-content">
+        <button class="close-btn" onclick="closeMenu()">×</button>
+
+        <div id="menu-drinks" class="menu-section">
+          <h2>koffie + thee</h2>
+
+          <div class="menu-row">
+            <span class="name">espresso</span><span class="price">€3.0</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">dubbele espresso</span
+            ><span class="price">€3.8</span>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">cappuccino</span></div>
+            <div class="menu-row indent">
+              <span class="name">- koemelk*</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- havermelk</span
+              ><span class="price">€4.0</span>
+            </div>
+          </div>
+
+          <div class="menu-row">
+            <span class="name">americano</span><span class="price">€3.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">cortado</span><span class="price">€3.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">flat white</span><span class="price">€4.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">chai latte*</span><span class="price">€4.5</span>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row">
+              <span class="name">warme chocolademelk</span
+              ><span class="price">€4.3</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ slagroom</span
+              ><span class="price">€4.8</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">losse thee</span></div>
+            <div class="menu-row indent">
+              <span class="name">- earl grey</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- rooibos</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- groen citroen</span
+              ><span class="price">€3.5</span>
+            </div>
+          </div>
+
+          <h2>fris + sap</h2>
+          <div class="menu-row">
+            <span class="name">pajottenlander appelsap*</span
+            ><span class="price">€3.5</span>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row">
+              <span class="name">bouche kombucha*</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- hybiskus</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- earlybird</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- lemondrop</span
+              ><span class="price">€5.5</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row">
+              <span class="name">band garage limonade*</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- passievrucht</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- mango</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- citroen</span
+              ><span class="price">€4.8</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row">
+              <span class="name">huisgemaakte limonade*</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- wisselende smaken</span
+              ><span class="price">€4.5</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">rauch eistee*</span></div>
+            <div class="menu-row indent">
+              <span class="name">- ijsthee perzik</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">- ijsthee citroen</span
+              ><span class="price">€4.8</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">smoothie</span></div>
+            <div class="menu-row indent">
+              <span class="name">- yoghurt* + aardbei + framboos + banaan</span
+              ><span class="price">€5.5</span>
+            </div>
+          </div>
+
+          <div class="menu-bio-text">
+            <p>* deze producten zijn biologisch</p>
+          </div>
+        </div>
+
+        <div id="menu-food" class="menu-section">
+          <h2>ontbijt</h2>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">yoghurt</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ bloedsinaasappel + granola</span
+              ><span class="price">€9.5</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desembrood</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ ei + kaas + boter</span
+              ><span class="price">€10</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">croissant</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ jam + boter</span
+              ><span class="price">€6.0</span>
+            </div>
+          </div>
+
+          <h2>lunch</h2>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desemtoast pompoen</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ pompoencrème + burrata</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ hazelnoot + salie</span
+              ><span class="price">€13.5</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desemtoast caponata</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ aubergine + tomaten</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ olijven + ricotta + oregano</span
+              ><span class="price">€14.0</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desembrood</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ pastrami + mosterdmayo</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ zuurkool + aardappelchips</span
+              ><span class="price">€14.5</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desemtosti</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ belegen kaas + parmezaan</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ gekarameliseerde ui + kimchi</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">keuze uit pittige saus of ketchup</span
+              ><span class="price">€13.0</span>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <div class="menu-row"><span class="name">desemtosti</span></div>
+            <div class="menu-row indent">
+              <span class="name">+ taleggio + spinazie</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">+ paddenstoelen + parmezaan</span>
+            </div>
+            <div class="menu-row indent">
+              <span class="name">keuze uit pittige saus of ketchup</span
+              ><span class="price">€13.0</span>
+            </div>
+          </div>
+
+          <div class="menu-sub-text">
+            alle vleeswaren komen van de biologische slagerij ‘de groene weg.’
+          </div>
+
+
+          <h2>hier of mee te nemen</h2>
+          <div class="menu-sub-text">
+            (zolang de voorraad strekt! kijk vooral even bij de bar.)
+          </div>
+
+          <div class="menu-row">
+            <span class="name">zuurdesem blond</span
+            ><span class="price">€5.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">zuurdesem bruin</span
+            ><span class="price">€5.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">croissant</span><span class="price">€3.0</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">pain au chocolat</span
+            ><span class="price">€3.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">hazelnoot pain au chocolat</span
+            ><span class="price">€4.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">amandel croissant</span
+            ><span class="price">€4.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">saucijs half om half</span
+            ><span class="price">€4.0</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">kaneelbroodje</span
+            ><span class="price">€4.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">lemon meringue taart</span
+            ><span class="price">€4.5</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">chocoladetaart</span
+            ><span class="price">€5.0</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">chocolade pistache koek</span
+            ><span class="price">€3.0</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">havermout cranberry koek</span
+            ><span class="price">€3.0</span>
+          </div>
+          <div class="menu-row">
+            <span class="name">speculaas</span><span class="price">€4.0</span>
+          </div>
+
+          <div class="menu-footer">
+            <p>allergie? vraag ons personeel om advies.</p>
+            <p>* menu verandert wekelijks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/Script.js?v=11" defer></script>
+    <script src="./js/FotoSlideShow.js?v=11" defer></script>
+    <script src="./js/Kaart.js?v=11" defer></script>
+  </body>
+</html>
