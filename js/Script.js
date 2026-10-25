@@ -23,21 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
     });
   }
-  // Google Maps pas laden als je in de buurt van de contactgegevens bent
-  const kaart = document.querySelector(".kaart-frame iframe[data-src]");
-  if (kaart) {
-    const kaartObserver = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          kaart.src = kaart.dataset.src;
-          kaartObserver.disconnect();
-        }
-      },
-      { root: document.querySelector(".scroll-wrapper"), rootMargin: "100% 0px" }
-    );
-    kaartObserver.observe(kaart);
-  }
-
   // 1. Viewport fix
   const setVh = () => {
     document.documentElement.style.setProperty(

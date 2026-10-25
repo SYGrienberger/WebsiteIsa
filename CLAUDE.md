@@ -22,10 +22,11 @@ Copy all files to an Apache server with `mod_deflate` and `mod_rewrite` enabled.
 
 ## Architecture
 
-Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info), `#contact` (footer: small embedded Google Maps above the contact details; the iframe has `data-src` and `Script.js` sets `src` once the footer is about a screen away).
+Single-page vertical-scrolling site. All content lives in `index.html` with these sections: `#home` (header/branding), `#info` (slideshow + business info), `#contact` (footer: small Google Map in the site colours above the contact details).
 
 **JavaScript files:**
 - `js/Script.js` — viewport height calculation, scroll-based corner text (Intersection Observer), and `openMenu()`/`closeMenu()` for the side menu overlay
+- `js/Kaart.js` — styled Google Map (Maps JavaScript API, JSON `styles` in the site palette, rust-red marker that opens directions). Loads only when the footer is about a screen away. Falls back to the plain embedded map if the key is missing/rejected (`gm_authFailure`) or the script fails. The API key is restricted in Google Cloud to boterzout.nl (+ the GitHub Pages domain); a key in public source is normal for Maps JS, the referrer restriction is what protects it
 - `js/FotoSlideShow.js` — photo carousel (10 images in `Afbeeldingen/`, 3:4 frame): sliding track with clone slides for seamless looping, +/- buttons and touch swipe / mouse drag via pointer events
 - `js/Menu.js` — referenced in `index.html` but **does not exist**; menu logic is already in `Script.js`
 

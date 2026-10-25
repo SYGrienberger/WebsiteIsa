@@ -27,7 +27,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
     <link rel="preload" href="assets/Fonts/SeasonSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/Fonts/PPWriter-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="css/styles.css?v=10" />
+    <link rel="stylesheet" href="css/styles.css?v=11" />
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -162,12 +162,12 @@
       <footer class="screen" id="contact">
         <div class="center-text">
           <div class="kaart-frame">
-            <iframe
-              data-src="https://www.google.com/maps?q=Boter%20%2B%20Zout%2C%20Wielakkerstraat%2014%2C%206811%20DB%20Arnhem&amp;z=16&amp;output=embed"
-              title="Locatie van Boter + Zout op Google Maps"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
-            ></iframe>
+            <div
+              class="kaart"
+              id="kaart"
+              role="region"
+              aria-label="Kaart: Boter + Zout, Wielakkerstraat 14, Arnhem"
+            ></div>
           </div>
           info@boterzout.nl<br />
           +31 6 42 97 66 90<br />
@@ -485,7 +485,8 @@
       </div>
     </div>
 
-    <script src="./js/Script.js?v=10" defer></script>
-    <script src="./js/FotoSlideShow.js?v=10" defer></script>
+    <script src="./js/Script.js?v=11" defer></script>
+    <script src="./js/FotoSlideShow.js?v=11" defer></script>
+    <script src="./js/Kaart.js?v=11" defer></script>
   </body>
 </html>
